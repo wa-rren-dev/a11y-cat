@@ -1,0 +1,137 @@
+[
+	{
+		"title": "In-browser automated tests",
+		"criteria": [
+			{
+				"title": "Run aXe browser extension",
+				"description": "If the page has dynamic content (the DOM is manipulated and content is added or removed programatically) then you need to put your page into a state in which it can be tested first.",
+				"id": 1
+			}
+		]
+	},
+	{
+		"title": "Markup review",
+		"criteria": [
+			{
+				"title": "Header tag order",
+				"description": "Are headings in the correct order?",
+				"id": 1
+			},
+			{
+				"title": "Landmark wrapping",
+				"description": "Are all page elements contained in a landmark?",
+				"id": 2
+			},
+			{
+				"title": "Landmark duplication",
+				"description": "Is there only one <header>, <main> and <footer> on the page?",
+				"id": 3
+			},
+			{
+				"title": "1st level heading",
+				"description": "Is there one <h1> on this page and does it accurately convey what's unique about this page?",
+				"id": 4
+			},
+			{
+				"title": "Page Title",
+				"description": "Does the page title accurately describe what's unique about this page?",
+				"id": 5
+			}
+		]
+	},
+	{
+		"title": "Keyboard access",
+		"criteria": [
+			{
+				"title": "Tabbing",
+				"description": "Can you tab to everything you can click on?"
+			},
+			{
+				"title": "Tabbing order",
+				"description": "Does tabbing follow a logical order? Generally top-left to bottom-right?"
+			},
+			{
+				"title": "Focus",
+				"description": "Is the current keyboard focus obvious on every tabbable element, or do you sometimes not know where you are?"
+			},
+			{
+				"title": "Forms",
+				"description": "Fully complete a form - check the ability to use radio buttons and checkboxes"
+			},
+			{
+				"title": "Non-visual controls",
+				"description": "Ensure you're not able to tab into controls that are visually hidden (unless they are present as an accessibility feature e.g. \"Skip to content\" links"
+			},
+			{
+				"title": "Persistent modals",
+				"description": "Modal or modal-like interfaces should prevent tabbing back to the main content until the modal is closed"
+			},
+			{
+				"title": "Esc!",
+				"description": "Can you use the esc key to close modals or other dynamic interfaces?"
+			}
+		]
+	},
+	{
+		"title": "Screen reader",
+		"criteria": [
+			{
+				"title": "Is the user informed of page updates?",
+				"description": "If you interact with the page in a manner which modifies the DOM, is the screenreader notified of this?"
+			},
+			{
+				"title": "Jump to headings",
+				"description": "Use the H key to jump between headings on the page. Is the page's content easily accessible if navigating this way?"
+			},
+			{
+				"title": "Jump to landmarks",
+				"description": ""
+			},
+			{
+				"title": "Skip links",
+				"description": "Can you skip repetative or large amounts of supporting content?"
+			},
+			{
+				"title": "Descriptive titles",
+				"description": "Do the headings accurately describe the content they preceed?"
+			},
+			{
+				"title": "Content graphics",
+				"description": "Are there accurate text descriptions of images that contain content (not purely decorative imagery)?"
+			},
+			{
+				"title": "Form submission error handling",
+				"description": "Is it easy to recover, amend and resubmit a form with focus pulled to an error summary?"
+			},
+			{
+				"title": "Form validation error handling",
+				"description": "If a single form input fails validation, is it obvious to the user?"
+			}
+		]
+	},
+	{
+		"title": "Visual inspection",
+		"criteria": [
+			{
+				"title": "Mobile reflow",
+				"description": "Page must reflow to 320 CSS pixels and scroll vertically"
+			},
+			{
+				"title": "Screen zoom",
+				"description": "Use a screen zoom application like windows magnifier"
+			},
+			{
+				"title": "Colour contrast",
+				"description": "Do you lose information or context if the page is set to greyscale?"
+			},
+			{
+				"title": "Disable all CSS",
+				"description": "Does the flow of the page still make sense?"
+			},
+			{
+				"title": "Zoom to 200%",
+				"description": "Is the page still fully usable if the browser is zoomed to 200%?"
+			}
+		]
+	}
+]
