@@ -22,9 +22,8 @@
     "@keystonejs/auth-password": "^5.1.1",
     "@keystonejs/fields": "^6.3.2",
     "@keystonejs/fields-wysiwyg-tinymce": "^5.2.0",
-    "@keystonejs/keystone": "^6.0.0"
-  },
-  "devDependencies": {
+    "@keystonejs/keystone": "^6.0.0",
+    "prettier": "^1.19.1",
     "cross-env": "^7.0.2"
   }
 }

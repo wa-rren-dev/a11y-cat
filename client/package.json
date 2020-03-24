@@ -9,11 +9,13 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "node-sass": "^4.13.1",
+    "prettier": "^1.19.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
     "slugify": "^1.4.0",
-    "uuid": "^7.0.2"
+    "uuid": "^7.0.2",
+    "cross-env": "^7.0.2"
   },
   "scripts": {
     "start": "cross-env PORT=3001 react-scripts start",
@@ -35,8 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "cross-env": "^7.0.2"
   }
 }

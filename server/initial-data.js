@@ -1,12 +1,14 @@
-const crypto = require('crypto');
+const crypto = require("crypto");
 const randomString = () => crypto.randomBytes(6).hexSlice();
+const requirementGroups = require("./seeds/requirement-groups.json");
+const requirements = require("./seeds/requirements.json");
 
 module.exports = async keystone => {
   // Count existing users
   const {
     data: {
-      _allUsersMeta: { count },
-    },
+      _allUsersMeta: { count }
+    }
   } = await keystone.executeQuery(
     `query {
       _allUsersMeta {
@@ -17,7 +19,7 @@ module.exports = async keystone => {
 
   if (count === 0) {
     const password = randomString();
-    const email = 'admin@example.com';
+    const email = "admin@example.com";
 
     await keystone.executeQuery(
       `mutation initialUser($password: String, $email: String) {
@@ -28,8 +30,8 @@ module.exports = async keystone => {
       {
         variables: {
           password,
-          email,
-        },
+          email
+        }
       }
     );
 
@@ -41,4 +43,12 @@ User created:
 Please change these details after initial login.
 `);
   }
+
+  const group = JSON.parse(requirementGroups);
+  const req = JSON.parse(requirements);
+
+  await keystone.createItems({
+    RequirementGroup: group,
+    Requirement: req
+  });
 };
