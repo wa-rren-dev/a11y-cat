@@ -12,7 +12,7 @@ const TestSchema = require("./lists/Test");
 
 const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
-const PROJECT_NAME = "a11y-audit-server";
+const PROJECT_NAME = "a11y-cat-server";
 
 const keystone = new Keystone({
   name: PROJECT_NAME,
