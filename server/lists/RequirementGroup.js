@@ -1,11 +1,14 @@
+// REQUIREMENT GROUP
+// A type that is assigned to an individual requirement
+// e.g. "Visual inspection"
+
 const { Text, Relationship } = require("@keystonejs/fields");
 const { Wysiwyg } = require("@keystonejs/fields-wysiwyg-tinymce");
 
 module.exports = {
   fields: {
-    title: {
-      type: Text,
-      isRequired: true
+    name: {
+      type: Text
     },
     description: {
       type: Wysiwyg

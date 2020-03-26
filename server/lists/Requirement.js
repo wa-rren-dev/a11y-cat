@@ -1,11 +1,14 @@
+// REQUIREMENT
+// A specific requirement / question that we want to assert on
+// e.g. "Are the headings in the correct order?"
+
 const { Text, Relationship } = require("@keystonejs/fields");
 const { Wysiwyg } = require("@keystonejs/fields-wysiwyg-tinymce");
 
 module.exports = {
   fields: {
-    title: {
-      type: Text,
-      isRequired: true
+    name: {
+      type: Text
     },
     section: {
       type: Relationship,
