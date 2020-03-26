@@ -17,10 +17,6 @@ function App() {
       <Grid>
         <GridItem cols={12}>
           <h1>NICE Accessibility Checklist</h1>
-        </GridItem>
-      </Grid>
-      <Grid>
-        <GridItem cols={3}>
           <h2>Sections</h2>
           <p>
             The checklist covers five key areas as a starting point for your
@@ -37,10 +33,9 @@ function App() {
             })}
           </ul>
         </GridItem>
-        <GridItem cols={9}>
-          <Checklist key={url} checklistId={uniqueId} spec={spec} />
-        </GridItem>
       </Grid>
+
+      <Checklist key={url} checklistId={uniqueId} spec={spec} />
     </main>
   );
 }

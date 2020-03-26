@@ -36,6 +36,11 @@
 				"title": "Page Title",
 				"description": "Does the page title accurately describe what's unique about this page?",
 				"id": 5
+			},
+			{
+				"title": "Valid markup",
+				"description": "Does the markup validate, and where it doesn't, is there justifyable reason for it?",
+				"id": 6
 			}
 		]
 	},
