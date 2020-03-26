@@ -1,5 +1,5 @@
 {
-  "name": "a11y-audit-client",
+  "name": "a11y-cat-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
