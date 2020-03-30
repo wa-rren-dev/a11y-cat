@@ -43,12 +43,4 @@ User created:
 Please change these details after initial login.
 `);
   }
-
-  // const group = JSON.parse(requirementGroups);
-  // const req = JSON.parse(requirements);
-
-  // await keystone.createItems({
-  //   RequirementGroup: group,
-  //   Requirement: req
-  // });
 };
