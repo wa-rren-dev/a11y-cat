@@ -15,7 +15,7 @@ module.exports = {
     },
     requirement: {
       type: Relationship,
-      ref: "Requirement",
+      ref: "Requirement.section",
       many: true
     }
   }

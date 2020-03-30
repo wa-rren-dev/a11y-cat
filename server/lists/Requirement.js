@@ -12,7 +12,7 @@ module.exports = {
     },
     section: {
       type: Relationship,
-      ref: "RequirementGroup"
+      ref: "RequirementGroup.requirement"
     },
     description: {
       type: Wysiwyg
