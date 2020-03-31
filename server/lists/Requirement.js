@@ -19,6 +19,9 @@ module.exports = {
     },
     displayOrder: {
       type: Integer
+    },
+    support: {
+      type: Wysiwyg
     }
   }
 };
