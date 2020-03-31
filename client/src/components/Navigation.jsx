@@ -6,6 +6,7 @@ import slugify from "slugify";
 const REQUIREMENT_GROUP_NAMES = gql`
   {
     allRequirementGroups {
+      id
       name
     }
   }
@@ -22,10 +23,10 @@ const Navigation = () => {
 
   return (
     <ul>
-      {allRequirementGroups.map(({ name }) => {
+      {allRequirementGroups.map(({ name, id }) => {
         const slug = slugify(name, { lower: true });
         return (
-          <li key={slug}>
+          <li key={id}>
             <a href={`#${slug}`}>{name}</a>
           </li>
         );
