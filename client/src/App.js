@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
+import { v4 as uuid } from "uuid";
 
 import { Checklist } from "./Checklist";
-import { v4 as uuid } from "uuid";
+import Navigation from "./components/Navigation";
 
 import spec from "./spec.json";
 
 import "./App.scss";
-import slugify from "slugify";
 
 const client = new ApolloClient({
   uri: "http://localhost:3000/admin/api",
@@ -29,16 +29,7 @@ function App() {
             The checklist covers five key areas as a starting point for your
             testing:
           </p>
-          <ul>
-            {spec.map(item => {
-              const slug = slugify(item.title, { lower: true });
-              return (
-                <li key={slug}>
-                  <a href={`#${slug}`}>{item.title}</a>
-                </li>
-              );
-            })}
-          </ul>
+          <Navigation />
         </GridItem>
       </Grid>
 
