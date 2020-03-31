@@ -5,7 +5,7 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { v4 as uuid } from "uuid";
 
 import { Checklist } from "./Checklist";
-import Navigation from "./components/Navigation";
+import { Navigation } from "./components/Navigation";
 
 import spec from "./spec.json";
 
@@ -38,10 +38,8 @@ function App() {
   );
 }
 
-const AppConnected = () => (
+export const AppConnected = () => (
   <ApolloProvider client={client}>
     <App />
   </ApolloProvider>
 );
-
-export default AppConnected;

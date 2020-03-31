@@ -11,7 +11,7 @@ const REQUIREMENT_GROUP_NAMES = gql`
   }
 `;
 
-const Navigation = () => {
+export const Navigation = () => {
   const { loading, error, data } = useQuery(REQUIREMENT_GROUP_NAMES);
 
   if (loading) return <div>Loading...</div>;
@@ -33,5 +33,3 @@ const Navigation = () => {
     </ul>
   );
 };
-
-export default Navigation;
