@@ -4,7 +4,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { v4 as uuid } from "uuid";
 
-import { Checklist } from "./Checklist";
+import { Specification } from "./Specification";
 import { Navigation } from "./components/Navigation";
 
 import spec from "./spec.json";
@@ -33,7 +33,7 @@ function App() {
         </GridItem>
       </Grid>
 
-      <Checklist key={url} checklistId={uniqueId} spec={spec} />
+      <Specification key={url} checklistId={uniqueId} spec={spec} />
     </main>
   );
 }

@@ -6,12 +6,12 @@ import { Panel } from "@nice-digital/nds-panel";
 import { Tag } from "@nice-digital/nds-tag";
 import slugify from "slugify";
 
-export const Criterion = props => {
+export const Requirement = props => {
   const possibleResults = [
     { label: "Pass", value: "pass" },
     { label: "Fail", value: "fail" },
     { label: "Not sure", value: "not_sure" },
-    { label: "Untested", value: "untested" }
+    { label: "Untested", value: "untested" },
   ];
   const [result, setResult] = useState("untested");
   const [comments, setComments] = useState("");

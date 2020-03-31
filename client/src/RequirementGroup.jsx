@@ -1,19 +1,19 @@
 import React from "react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import slugify from "slugify";
-import { Criterion } from "./Criterion";
+import { Requirement } from "./Requirement";
 
-export const ChecklistSection = ({ title, criteria, slug }) => {
+export const RequirementGroup = ({ title, criteria, slug }) => {
   return (
     <Grid>
       <GridItem cols={12}>
         <h2 id={slug}>{title}</h2>
         {criteria.map(criterion => {
           const localSlug = slugify(slug + "-" + criterion.title, {
-            lower: true
+            lower: true,
           });
           return (
-            <Criterion
+            <Requirement
               key={localSlug}
               slug={localSlug}
               section={title}
