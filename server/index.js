@@ -3,9 +3,10 @@ const { PasswordAuthStrategy } = require("@keystonejs/auth-password");
 const { Text, Checkbox, Password } = require("@keystonejs/fields");
 const { GraphQLApp } = require("@keystonejs/app-graphql");
 const { AdminUIApp } = require("@keystonejs/app-admin-ui");
-const initialiseData = require("./initial-data");
 const RequirementSchema = require("./lists/Requirement.js");
 const RequirementGroupSchema = require("./lists/RequirementGroup.js");
+const createUser = require("./seeds/create-user");
+const createRequirements = require("./seeds/create-requirements-and-requirement-groups");
 const AuditSchema = require("./lists/Audit");
 const SpecificationSchema = require("./lists/Specification");
 const TestSchema = require("./lists/Test");
@@ -19,6 +20,11 @@ const keystone = new Keystone({
   adapter: new Adapter(),
   onConnect: initialiseData
 });
+
+async function initialiseData(keystone) {
+  await createUser(keystone);
+  await createRequirements(keystone);
+}
 
 // Access control functions
 const userIsAdmin = ({ authentication: { item: user } }) =>

@@ -2,7 +2,7 @@
 // A specific requirement / question that we want to assert on
 // e.g. "Are the headings in the correct order?"
 
-const { Text, Relationship } = require("@keystonejs/fields");
+const { Text, Relationship, Integer } = require("@keystonejs/fields");
 const { Wysiwyg } = require("@keystonejs/fields-wysiwyg-tinymce");
 
 module.exports = {
@@ -15,6 +15,12 @@ module.exports = {
       ref: "RequirementGroup.requirement"
     },
     description: {
+      type: Wysiwyg
+    },
+    displayOrder: {
+      type: Integer
+    },
+    support: {
       type: Wysiwyg
     }
   }

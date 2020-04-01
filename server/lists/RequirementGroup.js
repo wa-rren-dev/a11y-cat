@@ -2,7 +2,7 @@
 // A type that is assigned to an individual requirement
 // e.g. "Visual inspection"
 
-const { Text, Relationship } = require("@keystonejs/fields");
+const { Text, Relationship, Integer } = require("@keystonejs/fields");
 const { Wysiwyg } = require("@keystonejs/fields-wysiwyg-tinymce");
 
 module.exports = {
@@ -17,6 +17,9 @@ module.exports = {
       type: Relationship,
       ref: "Requirement.section",
       many: true
+    },
+    displayOrder: {
+      type: Integer
     }
   }
 };

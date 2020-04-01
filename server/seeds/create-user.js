@@ -1,7 +1,5 @@
 const crypto = require("crypto");
 const randomString = () => crypto.randomBytes(6).hexSlice();
-const requirementGroups = require("./seeds/requirement-groups.json");
-const requirements = require("./seeds/requirements.json");
 
 module.exports = async keystone => {
   // Count existing users
