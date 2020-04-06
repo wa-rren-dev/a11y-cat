@@ -1,5 +1,5 @@
 import React from "react";
-import { RequirementGroup } from "./RequirementGroup";
+import { RequirementGroup } from "../RequirementGroup/RequirementGroup";
 import slugify from "slugify";
 
 export const Specification = ({ spec }) => {
