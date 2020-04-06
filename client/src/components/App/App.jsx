@@ -4,10 +4,10 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { v4 as uuid } from "uuid";
 
-import { Specification } from "./Specification";
-import { Navigation } from "./components/Navigation";
+import { Specification } from "../Specification/Specification";
+import { Navigation } from "../Navigation/Navigation";
 
-import spec from "./spec.json";
+import spec from "./../../spec.json";
 
 import "./App.scss";
 
@@ -24,11 +24,6 @@ function App() {
       <Grid>
         <GridItem cols={12}>
           <h1>NICE Accessibility Checklist</h1>
-          <h2>Sections</h2>
-          <p>
-            The checklist covers five key areas as a starting point for your
-            testing:
-          </p>
           <Navigation />
         </GridItem>
       </Grid>

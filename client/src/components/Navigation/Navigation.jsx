@@ -22,15 +22,22 @@ export const Navigation = () => {
   const { allRequirementGroups } = data;
 
   return (
-    <ul>
-      {allRequirementGroups.map(({ name, id }) => {
-        const slug = slugify(name, { lower: true });
-        return (
-          <li key={id}>
-            <a href={`#${slug}`}>{name}</a>
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <h2>Sections</h2>
+      <p>
+        The checklist covers five key areas as a starting point for your
+        testing:
+      </p>
+      <ul>
+        {allRequirementGroups.map(({ name, id }) => {
+          const slug = slugify(name, { lower: true });
+          return (
+            <li key={id}>
+              <a href={`#${slug}`}>{name}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import slugify from "slugify";
-import { Requirement } from "./Requirement";
+import { Requirement } from "../Requirement/Requirement";
 
 export const RequirementGroup = ({ title, criteria, slug }) => {
   return (
