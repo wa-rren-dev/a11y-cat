@@ -1,12 +1,12 @@
-const crypto = require("crypto");
-const randomString = () => crypto.randomBytes(6).hexSlice();
+// const crypto = require("crypto");
+// const randomString = () => crypto.randomBytes(6).hexSlice();
 
-module.exports = async keystone => {
+module.exports = async (keystone) => {
   // Count existing users
   const {
     data: {
-      _allUsersMeta: { count }
-    }
+      _allUsersMeta: { count },
+    },
   } = await keystone.executeQuery(
     `query {
       _allUsersMeta {
@@ -16,7 +16,7 @@ module.exports = async keystone => {
   );
 
   if (count === 0) {
-    const password = randomString();
+    const password = "abcde";
     const email = "admin@example.com";
 
     await keystone.executeQuery(
@@ -28,8 +28,8 @@ module.exports = async keystone => {
       {
         variables: {
           password,
-          email
-        }
+          email,
+        },
       }
     );
 
