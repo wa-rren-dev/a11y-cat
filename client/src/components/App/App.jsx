@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
 
+import { SpecificationList } from "../SpecificationList/SpecificationList";
 import { Specification } from "../Specification/Specification";
 import { Navigation } from "../Navigation/Navigation";
 
@@ -25,41 +24,8 @@ function App() {
       </Grid>
 
       <SpecificationList />
+      <Specification />
     </main>
-  );
-}
-
-const SPECIFICATIONS = gql`
-  {
-    allSpecifications {
-      name
-      id
-    }
-  }
-`;
-
-function SpecificationList() {
-  const { loading, error, data } = useQuery(SPECIFICATIONS);
-
-  if (loading) return <div>Loading...</div>;
-
-  if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
-
-  const { allSpecifications } = data;
-
-  return (
-    <Grid>
-      <GridItem cols={12}>
-        <h2>Specifications</h2>
-        <ul>
-          {allSpecifications.map(({ name, id }) => (
-            <li>
-              {name} ({id})
-            </li>
-          ))}
-        </ul>
-      </GridItem>
-    </Grid>
   );
 }
 

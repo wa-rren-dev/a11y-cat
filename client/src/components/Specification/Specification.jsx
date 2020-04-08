@@ -1,35 +1,39 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
-import slugify from "slugify";
-import { RequirementGroup } from "../RequirementGroup/RequirementGroup";
 
-const SPECIFICATION_DETAILS = gql`
+const SPECIFICATION = gql`
   {
-    allSpecifications {
+    Specification(where: { id: "5e8e3e6cae5c0c06e8b16e85" }) {
       name
       id
+      comments
+      requirements {
+        name
+        section {
+          name
+        }
+      }
     }
   }
 `;
 
-export const Specification = ({ specificationId }) => {
-  const { loading, error, data } = useQuery(SPECIFICATION_DETAILS);
+export const Specification = () => {
+  const { loading, error, data } = useQuery(SPECIFICATION);
 
   if (loading) return <div>Loading...</div>;
 
   if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
 
-  const { allSpecifications } = data;
+  const { Specification } = data;
+  const { name, requirements, comments } = Specification;
   return (
     <>
-      <h2>Specifications</h2>
+      <h2>Specification Details</h2>
       <ul>
-        {allSpecifications.map(({ name, id }) => (
-          <li>
-            {name} ({id})
-          </li>
-        ))}
+        <li>{name}</li>
+        <li>{comments}</li>
+        <li>{JSON.stringify(requirements)}</li>
       </ul>
     </>
   );
