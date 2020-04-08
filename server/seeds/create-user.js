@@ -16,7 +16,7 @@ module.exports = async (keystone) => {
   );
 
   if (count === 0) {
-    const password = "abcde";
+    const password = "a7fhr6f7rufjr";
     const email = "admin@example.com";
 
     await keystone.executeQuery(
