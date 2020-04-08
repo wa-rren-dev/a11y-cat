@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
-import { v4 as uuid } from "uuid";
+import { useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
 import { Specification } from "../Specification/Specification";
 import { Navigation } from "../Navigation/Navigation";
-
-import spec from "./../../spec.json";
 
 import "./App.scss";
 
@@ -16,9 +15,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const uniqueId = uuid();
-  const [url, setUrl] = useState("");
-
   return (
     <main>
       <Grid>
@@ -28,8 +24,42 @@ function App() {
         </GridItem>
       </Grid>
 
-      <Specification key={url} checklistId={uniqueId} spec={spec} />
+      <SpecificationList />
     </main>
+  );
+}
+
+const SPECIFICATIONS = gql`
+  {
+    allSpecifications {
+      name
+      id
+    }
+  }
+`;
+
+function SpecificationList() {
+  const { loading, error, data } = useQuery(SPECIFICATIONS);
+
+  if (loading) return <div>Loading...</div>;
+
+  if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
+
+  const { allSpecifications } = data;
+
+  return (
+    <Grid>
+      <GridItem cols={12}>
+        <h2>Specifications</h2>
+        <ul>
+          {allSpecifications.map(({ name, id }) => (
+            <li>
+              {name} ({id})
+            </li>
+          ))}
+        </ul>
+      </GridItem>
+    </Grid>
   );
 }
 
