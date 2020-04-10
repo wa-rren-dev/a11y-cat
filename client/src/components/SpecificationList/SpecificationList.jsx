@@ -27,9 +27,7 @@ export function SpecificationList() {
         <h2>Specifications</h2>
         <ul>
           {allSpecifications.map(({ name, id }) => (
-            <li>
-              {name} ({id})
-            </li>
+            <li key={id}>{name}</li>
           ))}
         </ul>
       </GridItem>

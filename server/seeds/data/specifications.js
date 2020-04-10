@@ -12,7 +12,7 @@ module.exports = {
   Specification: [
     {
       name: "April 2020 (AA)",
-      comments: "<p>Initial specification</p>",
+      comments: "<i>Initial specification<i>", // using <i> to test html parser
       requirements: requirementRelationships,
     },
   ],
