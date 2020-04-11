@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
+import React from "react";
+
 import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "@apollo/react-hooks";
-import { v4 as uuid } from "uuid";
+import { ApolloProvider, useQuery } from "@apollo/react-hooks";
+import { gql } from "apollo-boost";
 
+import { SpecificationList } from "../SpecificationList/SpecificationList";
 import { Specification } from "../Specification/Specification";
-import { Navigation } from "../Navigation/Navigation";
-
-import spec from "./../../spec.json";
+import { Header } from "../Header/Header";
 
 import "./App.scss";
 
@@ -15,20 +14,25 @@ const client = new ApolloClient({
   uri: "http://localhost:3000/admin/api",
 });
 
-function App() {
-  const uniqueId = uuid();
-  const [url, setUrl] = useState("");
+// go and get the id of the first specification (presuming there's only one for the time being)
+const FIRSTSPECIFICATION = gql`
+  {
+    allSpecifications(first: 1) {
+      id
+    }
+  }
+`;
 
+function App() {
+  const { loading, error, data } = useQuery(FIRSTSPECIFICATION);
+  if (loading) return null;
+  if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
+  const { id } = data.allSpecifications[0];
   return (
     <main>
-      <Grid>
-        <GridItem cols={12}>
-          <h1>NICE Accessibility Checklist</h1>
-          <Navigation />
-        </GridItem>
-      </Grid>
-
-      <Specification key={url} checklistId={uniqueId} spec={spec} />
+      <Header />
+      <SpecificationList />
+      <Specification id={id} />
     </main>
   );
 }

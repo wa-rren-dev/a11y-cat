@@ -17,7 +17,7 @@ export const Navigation = () => {
 
   if (loading) return <div>Loading...</div>;
 
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
 
   const { allRequirementGroups } = data;
 
