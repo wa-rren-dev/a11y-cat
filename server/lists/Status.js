@@ -4,7 +4,28 @@ module.exports = {
   fields: {
     status: {
       type: Select,
-      options: "PASS, FAIL, NOT SURE, NOT APPLICABLE, UNTESTED"
+      options: [
+        {
+          value: "PASS",
+          label: "Pass"
+        },
+        {
+          value: "FAIL",
+          label: "Fail"
+        },
+        {
+          value: "NOT_SURE",
+          label: "Not Sure"
+        },
+        {
+          value: "NOT_APPLICABLE",
+          label: "Not Applicable"
+        },
+        {
+          value: "UNTESTED",
+          label: "Untested"
+        }
+      ]
     }
   }
 };
