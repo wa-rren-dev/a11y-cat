@@ -11,8 +11,8 @@ module.exports = {
       ref: "Requirement"
     },
     status: {
-      type: Select,
-      options: "pending, processed"
+      type: Relationship,
+      ref: "Status"
     },
     note: {
       type: Text
