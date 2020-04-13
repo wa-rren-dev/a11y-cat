@@ -1,19 +1,24 @@
 module.exports = {
   Status: [
     {
-      status: "PASS"
+      value: "PASS",
+      label: "Pass"
     },
     {
-      status: "FAIL"
+      value: "FAIL",
+      label: "Fail"
     },
     {
-      status: "NOT_SURE"
+      value: "NOT_SURE",
+      label: "Not sure"
     },
     {
-      status: "NOT_APPLICABLE"
+      value: "NOT_APPLICABLE",
+      label: "Not applicable"
     },
     {
-      status: "UNTESTED"
+      value: "UNTESTED",
+      label: "Untested"
     }
   ]
 };
