@@ -142,7 +142,7 @@ module.exports = {
     {
       name: "Form submission error handling",
       description:
-        "Is it easy to recover, amend and resubmit a form with focus pulled to an error summary?",
+        "Is it easy to recover, amend and resubmit a form with focus pulled to a summary of form errors?",
       displayOrder: 7,
       section: { where: { name: "Screen reader" } }
     },
@@ -150,6 +150,13 @@ module.exports = {
       name: "Form validation error handling",
       description:
         "If a single form input fails validation, is it obvious to the user?",
+      displayOrder: 8,
+      section: { where: { name: "Screen reader" } }
+    },
+    {
+      name: "Form completion",
+      description:
+        "Can you fill in and submit any forms by using a screen reader only?",
       displayOrder: 8,
       section: { where: { name: "Screen reader" } }
     },

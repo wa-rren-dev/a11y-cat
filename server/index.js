@@ -7,6 +7,7 @@ const RequirementSchema = require("./lists/Requirement.js");
 const RequirementGroupSchema = require("./lists/RequirementGroup.js");
 const createUser = require("./seeds/create-user");
 const createRequirements = require("./seeds/create-requirements-and-requirement-groups");
+const createSpecifications = require("./seeds/create-specifications.js");
 const AuditSchema = require("./lists/Audit");
 const SpecificationSchema = require("./lists/Specification");
 const TestSchema = require("./lists/Test");
@@ -18,12 +19,13 @@ const PROJECT_NAME = "a11y-cat-server";
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(),
-  onConnect: initialiseData
+  onConnect: initialiseData,
 });
 
 async function initialiseData(keystone) {
   await createUser(keystone);
   await createRequirements(keystone);
+  await createSpecifications(keystone);
 }
 
 // Access control functions
@@ -35,7 +37,7 @@ const userOwnsItem = ({ authentication: { item: user } }) => {
   }
   return { id: user.id };
 };
-const userIsAdminOrOwner = auth => {
+const userIsAdminOrOwner = (auth) => {
   const isAdmin = access.userIsAdmin(auth);
   const isOwner = access.userOwnsItem(auth);
   return isAdmin ? isAdmin : isOwner;
@@ -47,25 +49,25 @@ keystone.createList("User", {
     name: { type: Text },
     email: {
       type: Text,
-      isUnique: true
+      isUnique: true,
     },
     isAdmin: { type: Checkbox },
     password: {
-      type: Password
-    }
+      type: Password,
+    },
   },
   access: {
     read: access.userIsAdminOrOwner,
     update: access.userIsAdminOrOwner,
     create: access.userIsAdmin,
     delete: access.userIsAdmin,
-    auth: true
-  }
+    auth: true,
+  },
 });
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
-  list: "User"
+  list: "User",
 });
 
 keystone.createList("Requirement", RequirementSchema);
@@ -80,7 +82,7 @@ module.exports = {
     new GraphQLApp(),
     new AdminUIApp({
       enableDefaultRoute: true,
-      authStrategy
-    })
-  ]
+      authStrategy,
+    }),
+  ],
 };
