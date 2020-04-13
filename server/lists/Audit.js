@@ -10,7 +10,7 @@ module.exports = {
     name: {
       type: Text
     },
-    comments: {
+    description: {
       type: Wysiwyg
     },
     tests: {

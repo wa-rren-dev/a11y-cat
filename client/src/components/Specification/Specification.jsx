@@ -22,7 +22,7 @@ export function Specification() {
   let { id } = useRouterParams();
 
   const { loading, error, data } = useQuery(GETSPECIFICATION, {
-    variables: id,
+    variables: { id },
   });
 
   if (loading) return <div>Loading...</div>;
@@ -30,11 +30,6 @@ export function Specification() {
   if (error)
     return (
       <>
-        <p>
-          <b>
-            Error: {JSON.stringify(error.networkError.result.errors[0].message)}
-          </b>
-        </p>
         <p>Error: {JSON.stringify(error)}</p>
       </>
     );
