@@ -8,9 +8,11 @@ const RequirementGroupSchema = require("./lists/RequirementGroup.js");
 const createUser = require("./seeds/create-user");
 const createRequirements = require("./seeds/create-requirements-and-requirement-groups");
 const createSpecifications = require("./seeds/create-specifications.js");
+const createStatuses = require("./seeds/create-statuses");
 const AuditSchema = require("./lists/Audit");
 const SpecificationSchema = require("./lists/Specification");
 const TestSchema = require("./lists/Test");
+const StatusSchema = require("./lists/Status");
 
 const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
@@ -19,13 +21,14 @@ const PROJECT_NAME = "a11y-cat-server";
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(),
-  onConnect: initialiseData,
+  onConnect: initialiseData
 });
 
 async function initialiseData(keystone) {
   await createUser(keystone);
   await createRequirements(keystone);
   await createSpecifications(keystone);
+  await createStatuses(keystone);
 }
 
 // Access control functions
@@ -37,10 +40,10 @@ const userOwnsItem = ({ authentication: { item: user } }) => {
   }
   return { id: user.id };
 };
-const userIsAdminOrOwner = (auth) => {
+const userIsAdminOrOwner = auth => {
   const isAdmin = access.userIsAdmin(auth);
   const isOwner = access.userOwnsItem(auth);
-  return isAdmin ? isAdmin : isOwner;
+  return isAdmin || isOwner;
 };
 const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner };
 
@@ -49,25 +52,25 @@ keystone.createList("User", {
     name: { type: Text },
     email: {
       type: Text,
-      isUnique: true,
+      isUnique: true
     },
     isAdmin: { type: Checkbox },
     password: {
-      type: Password,
-    },
+      type: Password
+    }
   },
   access: {
     read: access.userIsAdminOrOwner,
     update: access.userIsAdminOrOwner,
     create: access.userIsAdmin,
     delete: access.userIsAdmin,
-    auth: true,
-  },
+    auth: true
+  }
 });
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
-  list: "User",
+  list: "User"
 });
 
 keystone.createList("Requirement", RequirementSchema);
@@ -75,6 +78,7 @@ keystone.createList("RequirementGroup", RequirementGroupSchema);
 keystone.createList("Audit", AuditSchema);
 keystone.createList("Specification", SpecificationSchema);
 keystone.createList("Test", TestSchema);
+keystone.createList("Status", StatusSchema);
 
 module.exports = {
   keystone,
@@ -82,7 +86,7 @@ module.exports = {
     new GraphQLApp(),
     new AdminUIApp({
       enableDefaultRoute: true,
-      authStrategy,
-    }),
-  ],
+      authStrategy
+    })
+  ]
 };
