@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import { useParams as useRouterParams } from "react-router-dom";
 import parse from "html-react-parser";
 import "./specification.module.scss";
 
@@ -17,14 +18,21 @@ const GETSPECIFICATION = gql`
   }
 `;
 
-export const Specification = ({ id }) => {
+export function Specification() {
+  let { id } = useRouterParams();
+
   const { loading, error, data } = useQuery(GETSPECIFICATION, {
     variables: { id },
   });
 
   if (loading) return <div>Loading...</div>;
 
-  if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
+  if (error)
+    return (
+      <>
+        <p>Error: {JSON.stringify(error)}</p>
+      </>
+    );
 
   const { name, requirements, comments } = data.Specification;
 
@@ -55,9 +63,4 @@ export const Specification = ({ id }) => {
       </table>
     </>
   );
-
-  // return spec.map(section => {
-  //   const localSlug = slugify(section.title, { lower: true });
-  //   return <RequirementGroup key={localSlug} slug={localSlug} {...section} />;
-  // });
-};
+}

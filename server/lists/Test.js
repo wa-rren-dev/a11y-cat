@@ -8,17 +8,17 @@ const { Wysiwyg } = require("@keystonejs/fields-wysiwyg-tinymce");
 module.exports = {
   fields: {
     name: {
-      type: Text
+      type: Text // "Home page"
     },
     url: {
-      type: Text
+      type: Text // "example.com/home"
+    },
+    description: {
+      type: Wysiwyg // "after new home page design"
     },
     specification: {
       type: Relationship,
       ref: "Specification"
-    },
-    comments: {
-      type: Wysiwyg
     }
   }
 };
