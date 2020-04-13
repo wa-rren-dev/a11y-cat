@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import { Link } from "react-router-dom";
 
 const SPECIFICATIONS = gql`
   {
@@ -27,7 +28,9 @@ export function SpecificationList() {
         <h2>Specifications</h2>
         <ul>
           {allSpecifications.map(({ name, id }) => (
-            <li key={id}>{name}</li>
+            <li key={id}>
+              <Link to={`/specifications/${id}`}>{name}</Link>
+            </li>
           ))}
         </ul>
       </GridItem>

@@ -15,7 +15,7 @@ module.exports = {
       ref: "Requirement",
       many: true
     },
-    comments: {
+    description: {
       type: Wysiwyg
     }
   }
