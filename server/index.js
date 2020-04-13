@@ -8,6 +8,7 @@ const RequirementGroupSchema = require("./lists/RequirementGroup.js");
 const createUser = require("./seeds/create-user");
 const createRequirements = require("./seeds/create-requirements-and-requirement-groups");
 const createSpecifications = require("./seeds/create-specifications.js");
+const createStatuses = require("./seeds/create-statuses");
 const AuditSchema = require("./lists/Audit");
 const SpecificationSchema = require("./lists/Specification");
 const TestSchema = require("./lists/Test");
@@ -27,6 +28,7 @@ async function initialiseData(keystone) {
   await createUser(keystone);
   await createRequirements(keystone);
   await createSpecifications(keystone);
+  await createStatuses(keystone);
 }
 
 // Access control functions
