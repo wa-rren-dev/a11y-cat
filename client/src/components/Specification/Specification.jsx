@@ -9,7 +9,7 @@ const GETSPECIFICATION = gql`
   query Specification($id: ID!) {
     Specification(where: { id: $id }) {
       name
-      comments
+      description
       requirements {
         name
         id
@@ -34,7 +34,7 @@ export function Specification() {
       </>
     );
 
-  const { name, requirements, comments } = data.Specification;
+  const { name, requirements, description } = data.Specification;
 
   return (
     <>
@@ -50,7 +50,7 @@ export function Specification() {
         <tbody>
           <tr>
             <td>{name}</td>
-            <td>{parse(comments)}</td>
+            <td>{parse(description)}</td>
             <td>
               <ul>
                 {requirements.map(({ name, id }) => (
