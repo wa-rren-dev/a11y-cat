@@ -13,6 +13,7 @@ const AuditSchema = require("./lists/Audit");
 const SpecificationSchema = require("./lists/Specification");
 const TestSchema = require("./lists/Test");
 const StatusSchema = require("./lists/Status");
+const ResultSchema = require("./lists/Result");
 
 const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
@@ -79,6 +80,7 @@ keystone.createList("Audit", AuditSchema);
 keystone.createList("Specification", SpecificationSchema);
 keystone.createList("Test", TestSchema);
 keystone.createList("Status", StatusSchema);
+keystone.createList("Result", ResultSchema);
 
 module.exports = {
   keystone,

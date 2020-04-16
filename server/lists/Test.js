@@ -19,6 +19,11 @@ module.exports = {
     specification: {
       type: Relationship,
       ref: "Specification"
+    },
+    results: {
+      type: Relationship,
+      ref: "Result",
+      many: true
     }
   }
 };
