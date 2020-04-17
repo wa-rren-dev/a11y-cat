@@ -36,6 +36,8 @@ export function Specification() {
 
   const { name, requirements, description } = data.Specification;
 
+  throw new Error("Fuckkkk");
+
   return (
     <>
       <h2>Specification Details</h2>
@@ -43,7 +45,7 @@ export function Specification() {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Comments</th>
+            <th>Description</th>
             <th>Requirements</th>
           </tr>
         </thead>
