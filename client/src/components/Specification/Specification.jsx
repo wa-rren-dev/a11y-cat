@@ -43,7 +43,7 @@ export function Specification() {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Comments</th>
+            <th>Description</th>
             <th>Requirements</th>
           </tr>
         </thead>

@@ -1,10 +1,11 @@
 import React from "react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { useParams, Link } from "react-router-dom";
+import styles from "./Header.module.scss";
 
 export function Header() {
   return (
-    <>
+    <div className={styles.container}>
       <Grid>
         <GridItem cols={12}>
           <h1>A11y-Cat</h1>
@@ -22,6 +23,6 @@ export function Header() {
           </ul>
         </GridItem>
       </Grid>
-    </>
+    </div>
   );
 }

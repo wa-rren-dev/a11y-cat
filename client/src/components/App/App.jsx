@@ -9,8 +9,10 @@ import { SpecificationList } from "../SpecificationList/SpecificationList";
 import { Specification } from "../Specification/Specification";
 import { Home } from "../Home/Home";
 import { Header } from "../Header/Header";
+import { Footer } from "../Footer/Footer";
 
 import "./App.scss";
+import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 
 const client = new ApolloClient({
   uri: "http://localhost:3000/admin/api",
@@ -21,17 +23,20 @@ function App() {
     <main>
       <Router>
         <Header />
-        <Switch>
-          <Route path="/" exact>
-            <Home />
-          </Route>
-          <Route path="/specifications" exact>
-            <SpecificationList />
-          </Route>
-          <Route path="/specifications/:id" exact>
-            <Specification />
-          </Route>
-        </Switch>
+        <ErrorBoundary>
+          <Switch>
+            <Route path="/" exact>
+              <Home />
+            </Route>
+            <Route path="/specifications" exact>
+              <SpecificationList />
+            </Route>
+            <Route path="/specifications/:id" exact>
+              <Specification />
+            </Route>
+          </Switch>
+        </ErrorBoundary>
+        <Footer />
       </Router>
     </main>
   );
