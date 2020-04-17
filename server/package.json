@@ -25,5 +25,8 @@
     "@keystonejs/keystone": "^6.0.0",
     "prettier": "^1.19.1",
     "cross-env": "^7.0.2"
+  },
+  "devDependencies": {
+    "prettier": "^1.19.1"
   }
 }

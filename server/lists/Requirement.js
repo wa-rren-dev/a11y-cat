@@ -6,22 +6,22 @@ const { Text, Relationship, Integer } = require("@keystonejs/fields");
 const { Wysiwyg } = require("@keystonejs/fields-wysiwyg-tinymce");
 
 module.exports = {
-  fields: {
-    name: {
-      type: Text
-    },
-    section: {
-      type: Relationship,
-      ref: "RequirementGroup.requirement"
-    },
-    description: {
-      type: Wysiwyg
-    },
-    displayOrder: {
-      type: Integer
-    },
-    support: {
-      type: Wysiwyg
-    }
-  }
+	fields: {
+		name: {
+			type: Text
+		},
+		section: {
+			type: Relationship,
+			ref: "RequirementGroup.requirement"
+		},
+		description: {
+			type: Wysiwyg
+		},
+		displayOrder: {
+			type: Integer
+		},
+		support: {
+			type: Wysiwyg
+		}
+	}
 };

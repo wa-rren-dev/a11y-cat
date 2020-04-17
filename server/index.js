@@ -20,58 +20,58 @@ const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 const PROJECT_NAME = "a11y-cat-server";
 
 const keystone = new Keystone({
-  name: PROJECT_NAME,
-  adapter: new Adapter(),
-  onConnect: initialiseData
+	name: PROJECT_NAME,
+	adapter: new Adapter(),
+	onConnect: initialiseData
 });
 
 async function initialiseData(keystone) {
-  await createUser(keystone);
-  await createRequirements(keystone);
-  await createSpecifications(keystone);
-  await createStatuses(keystone);
+	await createUser(keystone);
+	await createRequirements(keystone);
+	await createSpecifications(keystone);
+	await createStatuses(keystone);
 }
 
 // Access control functions
 const userIsAdmin = ({ authentication: { item: user } }) =>
-  Boolean(user && user.isAdmin);
+	Boolean(user && user.isAdmin);
 const userOwnsItem = ({ authentication: { item: user } }) => {
-  if (!user) {
-    return false;
-  }
-  return { id: user.id };
+	if (!user) {
+		return false;
+	}
+	return { id: user.id };
 };
 const userIsAdminOrOwner = auth => {
-  const isAdmin = access.userIsAdmin(auth);
-  const isOwner = access.userOwnsItem(auth);
-  return isAdmin || isOwner;
+	const isAdmin = access.userIsAdmin(auth);
+	const isOwner = access.userOwnsItem(auth);
+	return isAdmin || isOwner;
 };
 const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner };
 
 keystone.createList("User", {
-  fields: {
-    name: { type: Text },
-    email: {
-      type: Text,
-      isUnique: true
-    },
-    isAdmin: { type: Checkbox },
-    password: {
-      type: Password
-    }
-  },
-  access: {
-    read: access.userIsAdminOrOwner,
-    update: access.userIsAdminOrOwner,
-    create: access.userIsAdmin,
-    delete: access.userIsAdmin,
-    auth: true
-  }
+	fields: {
+		name: { type: Text },
+		email: {
+			type: Text,
+			isUnique: true
+		},
+		isAdmin: { type: Checkbox },
+		password: {
+			type: Password
+		}
+	},
+	access: {
+		read: access.userIsAdminOrOwner,
+		update: access.userIsAdminOrOwner,
+		create: access.userIsAdmin,
+		delete: access.userIsAdmin,
+		auth: true
+	}
 });
 
 const authStrategy = keystone.createAuthStrategy({
-  type: PasswordAuthStrategy,
-  list: "User"
+	type: PasswordAuthStrategy,
+	list: "User"
 });
 
 keystone.createList("Requirement", RequirementSchema);
@@ -83,12 +83,12 @@ keystone.createList("Status", StatusSchema);
 keystone.createList("Result", ResultSchema);
 
 module.exports = {
-  keystone,
-  apps: [
-    new GraphQLApp(),
-    new AdminUIApp({
-      enableDefaultRoute: true,
-      authStrategy
-    })
-  ]
+	keystone,
+	apps: [
+		new GraphQLApp(),
+		new AdminUIApp({
+			enableDefaultRoute: true,
+			authStrategy
+		})
+	]
 };
