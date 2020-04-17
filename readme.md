@@ -2,7 +2,7 @@
 
 ![Poor little alley cat](https://wa-rren-dev.github.io/a11y-cat/cat.jpg)
 
-| Accessibility audit tracker & report generator
+An accessibility audit tracker & report generator.
 
 ## Tech
 
