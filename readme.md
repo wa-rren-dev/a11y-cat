@@ -1,6 +1,6 @@
 # A11y-Cat
 
-<div style="border-radius: 50%; width: 200px; height:200px; background: url(https://wa-rren-dev.github.io/a11y-cat/cat.jpg) center center; box-shadow: 0 0 100px rgba(0,0,0,1)"></div>
+![Poor little alley cat](https://wa-rren-dev.github.io/a11y-cat/cat.jpg)
 
 | Accessibility audit tracker & report generator
 
