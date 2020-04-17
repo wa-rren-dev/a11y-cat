@@ -36,8 +36,6 @@ export function Specification() {
 
   const { name, requirements, description } = data.Specification;
 
-  throw new Error("Fuckkkk");
-
   return (
     <>
       <h2>Specification Details</h2>
