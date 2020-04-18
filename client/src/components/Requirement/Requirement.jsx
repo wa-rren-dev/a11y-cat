@@ -33,10 +33,7 @@ export const Requirement = props => {
 									? "Please give any details you can"
 									: "Why aren't you sure?"}
 							</h4>
-							<textarea
-								onChange={e => setComments(e.target.value)}
-								value={comments}
-							/>
+							<textarea onChange={e => setComments(e.target.value)} value={comments} />
 						</Panel>
 					)}
 				</GridItem>

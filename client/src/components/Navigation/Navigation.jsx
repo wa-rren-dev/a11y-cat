@@ -25,8 +25,7 @@ export const Navigation = () => {
 		<>
 			<h2>Sections</h2>
 			<p>
-				The checklist covers five key areas as a starting point for your
-				testing:
+				The checklist covers five key areas as a starting point for your testing:
 			</p>
 			<ul>
 				{allRequirementGroups.map(({ name, id }) => {
