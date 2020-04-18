@@ -5,6 +5,7 @@ import { useParams as useRouterParams } from "react-router-dom";
 import parse from "html-react-parser";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import "./specification.module.scss";
 
 const GETSPECIFICATION = gql`
@@ -40,6 +41,9 @@ export function Specification() {
 
 	return (
 		<>
+			<Helmet>
+				<title>Details for specification - {name}</title>
+			</Helmet>
 			<Breadcrumbs>
 				<Breadcrumb tag={Link} to="/specifications">
 					Specifications

@@ -1,9 +1,13 @@
 import React from "react";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Helmet } from "react-helmet";
 
 export function Home() {
 	return (
 		<>
+			<Helmet>
+				<title>A11y-Cat - Accessibility auditing and reporting</title>
+			</Helmet>
 			<Breadcrumbs>
 				<Breadcrumb>Home</Breadcrumb>
 			</Breadcrumbs>
