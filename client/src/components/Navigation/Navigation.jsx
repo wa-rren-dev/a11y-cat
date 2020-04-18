@@ -4,40 +4,39 @@ import { gql } from "apollo-boost";
 import slugify from "slugify";
 
 const REQUIREMENT_GROUP_NAMES = gql`
-  {
-    allRequirementGroups {
-      id
-      name
-    }
-  }
+	{
+		allRequirementGroups {
+			id
+			name
+		}
+	}
 `;
 
 export const Navigation = () => {
-  const { loading, error, data } = useQuery(REQUIREMENT_GROUP_NAMES);
+	const { loading, error, data } = useQuery(REQUIREMENT_GROUP_NAMES);
 
-  if (loading) return <div>Loading...</div>;
+	if (loading) return <div>Loading...</div>;
 
-  if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
+	if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
 
-  const { allRequirementGroups } = data;
+	const { allRequirementGroups } = data;
 
-  return (
-    <>
-      <h2>Sections</h2>
-      <p>
-        The checklist covers five key areas as a starting point for your
-        testing:
-      </p>
-      <ul>
-        {allRequirementGroups.map(({ name, id }) => {
-          const slug = slugify(name, { lower: true });
-          return (
-            <li key={id}>
-              <a href={`#${slug}`}>{name}</a>
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
+	return (
+		<>
+			<h2>Sections</h2>
+			<p>
+				The checklist covers five key areas as a starting point for your testing:
+			</p>
+			<ul>
+				{allRequirementGroups.map(({ name, id }) => {
+					const slug = slugify(name, { lower: true });
+					return (
+						<li key={id}>
+							<a href={`#${slug}`}>{name}</a>
+						</li>
+					);
+				})}
+			</ul>
+		</>
+	);
 };
