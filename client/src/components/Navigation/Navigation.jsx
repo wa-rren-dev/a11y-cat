@@ -1,42 +1,30 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
-import slugify from "slugify";
-
-const REQUIREMENT_GROUP_NAMES = gql`
-	{
-		allRequirementGroups {
-			id
-			name
-		}
-	}
-`;
+import { Link } from "react-router-dom";
 
 export const Navigation = () => {
-	const { loading, error, data } = useQuery(REQUIREMENT_GROUP_NAMES);
-
-	if (loading) return <div>Loading...</div>;
-
-	if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
-
-	const { allRequirementGroups } = data;
-
+	const nav = [
+		{
+			label: "Specifications",
+			to: "/specifications"
+		},
+		{
+			label: "Audits",
+			to: "/audits"
+		},
+		{
+			label: "Tests",
+			to: "/tests"
+		}
+	];
 	return (
-		<>
-			<h2>Sections</h2>
-			<p>
-				The checklist covers five key areas as a starting point for your testing:
-			</p>
+		<nav>
 			<ul>
-				{allRequirementGroups.map(({ name, id }) => {
-					const slug = slugify(name, { lower: true });
-					return (
-						<li key={id}>
-							<a href={`#${slug}`}>{name}</a>
-						</li>
-					);
-				})}
+				{nav.map(({ to, label }) => (
+					<li>
+						<Link to={to}>{label}</Link>
+					</li>
+				))}
 			</ul>
-		</>
+		</nav>
 	);
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { Navigation } from "./../Navigation/Navigation";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 
@@ -8,19 +9,14 @@ export function Header() {
 		<div className={styles.container}>
 			<Grid>
 				<GridItem cols={12}>
-					<p>A11y-Cat</p>
+					<p>
+						<Link to="/">a11y-cat</Link>
+					</p>
 				</GridItem>
 			</Grid>
 			<Grid>
-				<GridItem cols={12} elementType="nav">
-					<ul>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="/specifications">Specification List</Link>
-						</li>
-					</ul>
+				<GridItem cols={12}>
+					<Navigation />
 				</GridItem>
 			</Grid>
 		</div>
