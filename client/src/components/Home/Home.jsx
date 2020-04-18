@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { Button } from "@nice-digital/nds-button";
 import { Hero } from "@nice-digital/nds-hero";
 import { PhaseBanner } from "@nice-digital/nds-phase-banner";
@@ -15,6 +16,9 @@ const Header = <PhaseBanner alpha />;
 export function Home() {
 	return (
 		<>
+			<Helmet>
+				<title>A11y-Cat - Accessibility audit tracker and reporter</title>
+			</Helmet>
 			<Hero
 				title="A11y-Cat"
 				intro="Accessibility audit tracker and reporter"
