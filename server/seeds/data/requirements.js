@@ -23,8 +23,7 @@ module.exports = {
 		},
 		{
 			name: "Landmark duplication",
-			description:
-				"Is there only one <header>, <main> and <footer> on the page?",
+			description: "Is there only one <header>, <main> and <footer> on the page?",
 			displayOrder: 3,
 			section: { where: { name: "Markup Review" } }
 		},
@@ -127,8 +126,7 @@ module.exports = {
 		},
 		{
 			name: "Descriptive titles",
-			description:
-				"Do the headings accurately describe the content they preceed?",
+			description: "Do the headings accurately describe the content they preceed?",
 			displayOrder: 5,
 			section: { where: { name: "Screen reader" } }
 		},
