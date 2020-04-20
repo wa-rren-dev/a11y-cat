@@ -6,7 +6,7 @@ export function Footer() {
 	return (
 		<div className={styles.container}>
 			<Grid>
-				<GridItem cols={12}></GridItem>
+				<GridItem cols={12}>&nbsp;</GridItem>
 			</Grid>
 		</div>
 	);

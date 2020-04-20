@@ -20,7 +20,7 @@ export const Navigation = () => {
 		<nav>
 			<ul>
 				{nav.map(({ to, label }) => (
-					<li>
+					<li key={label}>
 						<Link to={to}>{label}</Link>
 					</li>
 				))}
