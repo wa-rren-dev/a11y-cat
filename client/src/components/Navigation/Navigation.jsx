@@ -18,7 +18,7 @@ export const Navigation = () => {
 	];
 	return (
 		<nav>
-			<ul>
+			<ul className="list--unstyled">
 				{nav.map(({ to, label }) => (
 					<li key={label}>
 						<Link to={to}>{label}</Link>

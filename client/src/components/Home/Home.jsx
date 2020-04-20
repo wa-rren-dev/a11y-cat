@@ -11,7 +11,15 @@ const ActionButtons = (
 	</Button>
 );
 
-const Header = <PhaseBanner alpha />;
+const Header = (
+	<PhaseBanner alpha>
+		Problems?{" "}
+		<a href="https://github.com/wa-rren-dev/a11y-cat/issues">
+			File issues on Github
+		</a>
+		!
+	</PhaseBanner>
+);
 
 export function Home() {
 	return (
