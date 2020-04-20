@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
@@ -7,11 +8,12 @@ const ADD_AUDIT = gql`
 	mutation CreateAudit($data: AuditCreateInput) {
 		createAudit(data: $data) {
 			name
+			id
 		}
 	}
 `;
 
-export const AuditsCreate = () => {
+export const AuditCreate = () => {
 	const { register, handleSubmit, errors } = useForm();
 	const [addAudit, { data, loading, error }] = useMutation(ADD_AUDIT);
 	const onSubmit = ({ auditName }) =>
@@ -37,7 +39,10 @@ export const AuditsCreate = () => {
 					)}
 				</form>
 			) : (
-				<p>Audit {data.createAudit.name} created</p>
+				<>
+					<p>Audit {data.createAudit.name} created</p>
+					<Link to={`/audits/${data.createAudit.id}/edit`}>Edit</Link>
+				</>
 			)}
 		</div>
 	);

@@ -4,7 +4,8 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { SpecificationList } from "../SpecificationList/SpecificationList";
 import { Specification } from "../Specification/Specification";
-import { AuditsCreate } from "../AuditsCreate/AuditsCreate";
+import { AuditCreate } from "../AuditCreate/AuditCreate";
+import { AuditEdit } from "../AuditEdit/AuditEdit";
 import { Home } from "../Home/Home";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
@@ -32,7 +33,10 @@ function App() {
 							<Specification />
 						</Route>
 						<Route path="/audits/create" exact>
-							<AuditsCreate />
+							<AuditCreate />
+						</Route>
+						<Route path="/audits/:id/edit" exact>
+							<AuditEdit />
 						</Route>
 					</Switch>
 				</ErrorBoundary>
