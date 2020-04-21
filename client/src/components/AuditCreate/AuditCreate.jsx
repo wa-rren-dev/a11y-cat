@@ -13,11 +13,25 @@ const ADD_AUDIT = gql`
 	}
 `;
 
+const DELETE_AUDIT = gql`
+	mutation DeleteAudit($id: ID!) {
+		deleteAudit(id: $id) {
+			name
+		}
+	}
+`;
+
 export const AuditCreate = () => {
 	const { register, handleSubmit, errors } = useForm();
 	const [addAudit, { data, loading, error }] = useMutation(ADD_AUDIT);
+	const [
+		deleteAudit,
+		{ data: deleteData, loading: deleteLoading, error: deleteError }
+	] = useMutation(DELETE_AUDIT);
 	const onSubmit = ({ auditName }) =>
 		addAudit({ variables: { data: { name: auditName } } });
+	const handleDelete = () =>
+		deleteAudit({ variables: { id: data.createAudit.id } });
 
 	return (
 		<div>
@@ -40,8 +54,19 @@ export const AuditCreate = () => {
 				</form>
 			) : (
 				<>
-					<p>Audit {data.createAudit.name} created</p>
-					<Link to={`/audits/${data.createAudit.id}/edit`}>Edit</Link>
+					{!deleteData && (
+						<>
+							<p>Audit {data.createAudit.name} created</p>
+							<Link to={`/audits/${data.createAudit.id}/edit`}>Edit</Link>
+						</>
+					)}
+					{!deleteData ? (
+						<button type="button" onClick={handleDelete}>
+							Delete
+						</button>
+					) : (
+						<p>{deleteData.deleteAudit.name} successfully deleted</p>
+					)}
 				</>
 			)}
 		</div>
