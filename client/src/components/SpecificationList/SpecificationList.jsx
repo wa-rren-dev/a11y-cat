@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { Link } from "react-router-dom";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Helmet } from "react-helmet";
 
 const SPECIFICATIONS = gql`
 	{
@@ -25,6 +26,9 @@ export function SpecificationList() {
 
 	return (
 		<>
+			<Helmet>
+				<title>Specifications list</title>
+			</Helmet>
 			<Breadcrumbs>
 				<Breadcrumb>Specifications</Breadcrumb>
 			</Breadcrumbs>

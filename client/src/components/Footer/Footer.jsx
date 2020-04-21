@@ -6,15 +6,7 @@ export function Footer() {
 	return (
 		<div className={styles.container}>
 			<Grid>
-				<GridItem cols={4}>
-					<p>Footer</p>
-				</GridItem>
-				<GridItem cols={4}>
-					<p>Footer</p>
-				</GridItem>
-				<GridItem cols={4}>
-					<p>Footer</p>
-				</GridItem>
+				<GridItem cols={12}>&nbsp;</GridItem>
 			</Grid>
 		</div>
 	);
