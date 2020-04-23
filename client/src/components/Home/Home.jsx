@@ -3,10 +3,10 @@ import { Helmet } from "react-helmet";
 import { Button } from "@nice-digital/nds-button";
 import { Hero } from "@nice-digital/nds-hero";
 import { PhaseBanner } from "@nice-digital/nds-phase-banner";
-import { Navigation } from "./../Navigation/Navigation";
+import { Navigation } from "../Navigation/Navigation";
 
 const ActionButtons = (
-	<Button href="/" elementType="a">
+	<Button href="/audits/create" elementType="a">
 		Create a new audit
 	</Button>
 );
