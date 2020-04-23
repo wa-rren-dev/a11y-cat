@@ -7,6 +7,7 @@ import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { map, uniq, path, pipe } from "ramda";
 
 const GETSPECIFICATION = gql`
 	query Specification($id: ID!) {
@@ -23,28 +24,6 @@ const GETSPECIFICATION = gql`
 		}
 	}
 `;
-
-function sortRequirements(requirements) {
-	let sections = [];
-
-	for (let requirement of requirements) {
-		const section = requirement.section.name;
-		sections.push(section);
-	}
-
-	let uniqueSections = [...new Set(sections)];
-
-	let sortedRequirements = [];
-
-	for (let section of uniqueSections) {
-		sortedRequirements.push({
-			name: section,
-			requirements: requirements.filter(i => i.section.name === section)
-		});
-	}
-
-	return sortedRequirements;
-}
 
 export function Specification() {
 	let { id } = useRouterParams();
@@ -64,7 +43,18 @@ export function Specification() {
 
 	const { name, requirements, description } = data.Specification;
 
-	const sortedRequirements = sortRequirements(requirements);
+	const createRequirementGroup = requirements => section => ({
+		name: section,
+		requirements: requirements.filter(
+			requirement => requirement.section.name === section
+		)
+	});
+
+	const sortedRequirements = pipe(
+		map(path(["section", "name"])),
+		uniq,
+		map(createRequirementGroup(requirements))
+	);
 
 	return (
 		<>
@@ -81,7 +71,7 @@ export function Specification() {
 			<p>{parse(description)}</p>
 
 			<Grid>
-				{sortedRequirements.map(({ name, requirements }) => (
+				{sortedRequirements(requirements).map(({ name, requirements }) => (
 					<>
 						<GridItem cols={12}>
 							<h2 class="h4">{name}</h2>
