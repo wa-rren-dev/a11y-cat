@@ -9,11 +9,13 @@ const createUser = require("./seeds/create-user");
 const createRequirements = require("./seeds/create-requirements-and-requirement-groups");
 const createSpecifications = require("./seeds/create-specifications.js");
 const createStatuses = require("./seeds/create-statuses");
+const createServices = require("./seeds/create-services");
 const AuditSchema = require("./lists/Audit");
 const SpecificationSchema = require("./lists/Specification");
 const TestSchema = require("./lists/Test");
 const StatusSchema = require("./lists/Status");
 const ResultSchema = require("./lists/Result");
+const ServiceSchema = require("./lists/Service");
 
 const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
@@ -30,6 +32,7 @@ async function initialiseData(keystone) {
 	await createRequirements(keystone);
 	await createSpecifications(keystone);
 	await createStatuses(keystone);
+	await createServices(keystone);
 }
 
 // Access control functions
@@ -81,6 +84,7 @@ keystone.createList("Specification", SpecificationSchema);
 keystone.createList("Test", TestSchema);
 keystone.createList("Status", StatusSchema);
 keystone.createList("Result", ResultSchema);
+keystone.createList("Service", ServiceSchema);
 
 module.exports = {
 	keystone,
