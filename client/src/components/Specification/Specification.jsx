@@ -94,29 +94,6 @@ export function Specification() {
 					</>
 				))}
 			</Grid>
-
-			{/*<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Description</th>
-						<th>Requirements</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>{name}</td>
-						<td>{parse(description)}</td>
-						<td>
-							<ul>
-								{sortedRequirements.map(({ name, id }) => (
-									<li key={id}>{name}</li>
-								))}
-							</ul>
-						</td>
-					</tr>
-				</tbody>
-			</table>*/}
 		</>
 	);
 }
