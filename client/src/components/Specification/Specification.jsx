@@ -6,7 +6,7 @@ import parse from "html-react-parser";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import "./specification.module.scss";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
 
 const GETSPECIFICATION = gql`
 	query Specification($id: ID!) {
@@ -16,10 +16,35 @@ const GETSPECIFICATION = gql`
 			requirements {
 				name
 				id
+				section {
+					name
+				}
 			}
 		}
 	}
 `;
+
+function sortRequirements(requirements) {
+	let sections = [];
+
+	for (let requirement of requirements) {
+		const section = requirement.section.name;
+		sections.push(section);
+	}
+
+	let uniqueSections = [...new Set(sections)];
+
+	let sortedRequirements = [];
+
+	for (let section of uniqueSections) {
+		sortedRequirements.push({
+			name: section,
+			requirements: requirements.filter(i => i.section.name === section)
+		});
+	}
+
+	return sortedRequirements;
+}
 
 export function Specification() {
 	let { id } = useRouterParams();
@@ -39,6 +64,8 @@ export function Specification() {
 
 	const { name, requirements, description } = data.Specification;
 
+	const sortedRequirements = sortRequirements(requirements);
+
 	return (
 		<>
 			<Helmet>
@@ -50,8 +77,25 @@ export function Specification() {
 				</Breadcrumb>
 				<Breadcrumb>{name}</Breadcrumb>
 			</Breadcrumbs>
-			<h1>Specification Details</h1>
-			<table>
+			<h1>{name}</h1>
+			<p>{parse(description)}</p>
+
+			<Grid>
+				{sortedRequirements.map(({ name, requirements }) => (
+					<>
+						<GridItem cols={12}>
+							<h2 class="h4">{name}</h2>
+							<ul>
+								{requirements.map(item => (
+									<li>{item.name}</li>
+								))}
+							</ul>
+						</GridItem>
+					</>
+				))}
+			</Grid>
+
+			{/*<table>
 				<thead>
 					<tr>
 						<th>Name</th>
@@ -65,14 +109,14 @@ export function Specification() {
 						<td>{parse(description)}</td>
 						<td>
 							<ul>
-								{requirements.map(({ name, id }) => (
+								{sortedRequirements.map(({ name, id }) => (
 									<li key={id}>{name}</li>
 								))}
 							</ul>
 						</td>
 					</tr>
 				</tbody>
-			</table>
+			</table>*/}
 		</>
 	);
 }

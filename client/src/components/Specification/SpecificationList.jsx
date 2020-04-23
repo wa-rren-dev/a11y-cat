@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { Link } from "react-router-dom";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
+import { Card } from "@nice-digital/nds-card";
 import { Helmet } from "react-helmet";
 
 const SPECIFICATIONS = gql`
@@ -11,6 +12,9 @@ const SPECIFICATIONS = gql`
 		allSpecifications {
 			name
 			id
+			_requirementsMeta {
+				count
+			}
 		}
 	}
 `;
@@ -35,11 +39,22 @@ export function SpecificationList() {
 			<Grid>
 				<GridItem cols={12}>
 					<h1>Specifications</h1>
-					<ul>
-						{allSpecifications.map(({ name, id }) => (
-							<li key={id}>
-								<Link to={`/specifications/${id}`}>{name}</Link>
-							</li>
+					<ul className="list--unstyled">
+						{allSpecifications.map(({ name, id, _requirementsMeta }) => (
+							<Card
+								elementType="li"
+								headingText={name}
+								headingElementType="h2"
+								link={{
+									destination: `/specifications/${id}`,
+									elementType: Link
+								}}
+								metadata={[
+									{
+										value: `${_requirementsMeta.count} requirements`
+									}
+								]}
+							/>
 						))}
 					</ul>
 				</GridItem>
