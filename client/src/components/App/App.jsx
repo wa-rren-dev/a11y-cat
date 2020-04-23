@@ -4,13 +4,14 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { SpecificationList } from "../SpecificationList/SpecificationList";
 import { Specification } from "../Specification/Specification";
-import { AuditCreate } from "../AuditCreate/AuditCreate";
-import { AuditEdit } from "../AuditEdit/AuditEdit";
+import { AuditCreate } from "../Audit/AuditCreate";
+import { AuditEdit } from "../Audit/AuditEdit";
 import { Home } from "../Home/Home";
 import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import "./App.scss";
+import { AuditList } from "../Audit/AuditList";
 
 const client = new ApolloClient({
 	uri: "http://localhost:3000/admin/api"
@@ -31,6 +32,9 @@ function App() {
 						</Route>
 						<Route path="/specifications/:id" exact>
 							<Specification />
+						</Route>
+						<Route path="/audits" exact>
+							<AuditList />
 						</Route>
 						<Route path="/audits/create" exact>
 							<AuditCreate />
