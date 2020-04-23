@@ -6,7 +6,8 @@ import parse from "html-react-parser";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import "./specification.module.scss";
+import { Grid, GridItem } from "@nice-digital/nds-grid";
+import { map, uniq, path, pipe } from "ramda";
 
 const GETSPECIFICATION = gql`
 	query Specification($id: ID!) {
@@ -16,6 +17,9 @@ const GETSPECIFICATION = gql`
 			requirements {
 				name
 				id
+				section {
+					name
+				}
 			}
 		}
 	}
@@ -39,6 +43,19 @@ export function Specification() {
 
 	const { name, requirements, description } = data.Specification;
 
+	const createRequirementGroup = requirements => section => ({
+		name: section,
+		requirements: requirements.filter(
+			requirement => requirement.section.name === section
+		)
+	});
+
+	const sortedRequirements = pipe(
+		map(path(["section", "name"])),
+		uniq,
+		map(createRequirementGroup(requirements))
+	);
+
 	return (
 		<>
 			<Helmet>
@@ -50,29 +67,23 @@ export function Specification() {
 				</Breadcrumb>
 				<Breadcrumb>{name}</Breadcrumb>
 			</Breadcrumbs>
-			<h1>Specification Details</h1>
-			<table>
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Description</th>
-						<th>Requirements</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>{name}</td>
-						<td>{parse(description)}</td>
-						<td>
+			<h1>{name}</h1>
+			<p>{parse(description)}</p>
+
+			<Grid>
+				{sortedRequirements(requirements).map(({ name, requirements }) => (
+					<>
+						<GridItem cols={12}>
+							<h2 class="h4">{name}</h2>
 							<ul>
-								{requirements.map(({ name, id }) => (
-									<li key={id}>{name}</li>
+								{requirements.map(item => (
+									<li>{item.name}</li>
 								))}
 							</ul>
-						</td>
-					</tr>
-				</tbody>
-			</table>
+						</GridItem>
+					</>
+				))}
+			</Grid>
 		</>
 	);
 }

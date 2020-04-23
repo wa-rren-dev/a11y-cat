@@ -2,7 +2,7 @@ import React from "react";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { SpecificationList } from "../SpecificationList/SpecificationList";
+import { SpecificationList } from "../Specification/SpecificationList";
 import { Specification } from "../Specification/Specification";
 import { AuditCreate } from "../Audit/AuditCreate";
 import { AuditEdit } from "../Audit/AuditEdit";
