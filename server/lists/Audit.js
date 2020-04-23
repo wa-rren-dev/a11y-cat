@@ -10,6 +10,10 @@ module.exports = {
 		name: {
 			type: Text
 		},
+		service: {
+			type: Relationship,
+			ref: "Service"
+		},
 		description: {
 			type: Wysiwyg
 		},
