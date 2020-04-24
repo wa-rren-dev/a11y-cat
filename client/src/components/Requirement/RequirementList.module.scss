@@ -1,0 +1,14 @@
+@import '../../../node_modules/@nice-digital/nds-core/scss/core.scss';
+
+.descriptionList {
+ padding-bottom: rem($nds-spacing-medium);
+ margin-bottom: rem($nds-spacing-medium);
+}
+
+.descriptionList__term {
+ font-weight: bold;
+}
+
+.descriptionList__description {
+ margin-left: 0;
+}

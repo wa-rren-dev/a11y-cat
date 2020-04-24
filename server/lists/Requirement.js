@@ -14,14 +14,20 @@ module.exports = {
 			type: Relationship,
 			ref: "RequirementGroup.requirement"
 		},
-		description: {
+		shortDescription: {
+			type: Wysiwyg
+		},
+		longDescription: {
+			type: Wysiwyg
+		},
+		shortSupport: {
+			type: Wysiwyg
+		},
+		longSupport: {
 			type: Wysiwyg
 		},
 		displayOrder: {
 			type: Integer
-		},
-		support: {
-			type: Wysiwyg
 		}
 	}
 };

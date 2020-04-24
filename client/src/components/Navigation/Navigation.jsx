@@ -14,6 +14,10 @@ export const Navigation = () => {
 		{
 			label: "Tests",
 			to: "/tests"
+		},
+		{
+			label: "Requirements",
+			to: "/requirements"
 		}
 	];
 	return (
