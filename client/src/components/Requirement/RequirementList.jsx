@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Card } from "@nice-digital/nds-card";
 import { Helmet } from "react-helmet";
+import parse from "html-react-parser";
 import s from "./RequirementList.module.scss";
 
 const REQUIREMENTS = gql`
@@ -59,14 +60,16 @@ export function RequirementList() {
 										elementType="dt"
 										className={s.descriptionList__term}
 									>
-										<Link to={`/requirements/${id}`}>{name}</Link>
+										<h2 class="h5">
+											<Link to={`/requirements/${id}`}>{name}</Link>
+										</h2>
 									</GridItem>
 									<GridItem
 										elementType="dd"
 										cols="12 sm:7"
 										className={s.descriptionList__description}
 									>
-										{shortDescription}
+										{parse(shortDescription)}
 									</GridItem>
 								</div>
 							))}

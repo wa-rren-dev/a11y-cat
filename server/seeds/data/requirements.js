@@ -6,7 +6,7 @@ module.exports = {
 			longSupport: "",
 			section: { where: { name: "In-browser automated tests" } },
 			shortDescription:
-				"If the page has dynamic content (the DOM is manipulated and markup is amended programatically) then you need to put your page into a state in which it can be tested first.",
+				"<p>If the page has dynamic content (the DOM is manipulated and markup is amended programatically) then you need to put your page into a state in which it can be tested first.</p>",
 			longDescription: "",
 			displayOrder: 1
 		},
@@ -14,7 +14,7 @@ module.exports = {
 			name: "Header tag order",
 			shortSupport: "",
 			longSupport: "",
-			shortDescription: "Are headings in the correct order?",
+			shortDescription: "<p>Are headings in the correct order?</p>",
 			longDescription: "",
 			displayOrder: 1,
 			section: { where: { name: "Markup Review" } }
@@ -23,7 +23,7 @@ module.exports = {
 			name: "Landmark wrapping",
 			shortSupport: "",
 			longSupport: "",
-			shortDescription: "Are all page elements contained in a landmark?",
+			shortDescription: "<p>Are all page elements contained in a landmark?</p>",
 			longDescription: "",
 			displayOrder: 2,
 			section: { where: { name: "Markup Review" } }
@@ -33,7 +33,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Is there only one <header>, <main> and <footer> on the page?",
+				"<p>Is there only one &lt;header&gt;, &lt;main&gt; and &lt;footer&gt; on the page?</p>",
 			longDescription: "",
 			displayOrder: 3,
 			section: { where: { name: "Markup Review" } }
@@ -43,7 +43,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Is there one <h1> on this page and does it accurately convey what's unique about this page?",
+				"<p>Is there one &lt;h1&gt; on this page and does it accurately convey what's unique about this page?</p>",
 			longDescription: "",
 			displayOrder: 4,
 			section: { where: { name: "Markup Review" } }
@@ -53,7 +53,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Does the page title accurately describe what's unique about this page?",
+				"<p>Does the page title accurately describe what's unique about this page?</p>",
 			longDescription: "",
 			displayOrder: 5,
 			section: { where: { name: "Markup Review" } }
@@ -63,7 +63,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Does the markup validate, and where it doesn't, is there justifyable reason for it?",
+				"<p>Does the markup validate, and where it doesn't, is there justifyable reason for it?</p>",
 			longDescription: "",
 			displayOrder: 6,
 			section: { where: { name: "Markup Review" } }
@@ -72,7 +72,7 @@ module.exports = {
 			name: "Tabbing",
 			shortSupport: "",
 			longSupport: "",
-			shortDescription: "Can you tab to everything you can click on?",
+			shortDescription: "<p>Can you tab to everything you can click on?</p>",
 			longDescription: "",
 			displayOrder: 1,
 			section: { where: { name: "Keyboard Access" } }
@@ -82,7 +82,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Does tabbing follow a logical order? Generally top-left to bottom-right?",
+				"<p>Does tabbing follow a logical order? Generally top-left to bottom-right?</p>",
 			longDescription: "",
 			displayOrder: 2,
 			section: { where: { name: "Keyboard Access" } }
@@ -92,7 +92,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Is the current keyboard focus obvious on every tabbable element, or do you sometimes not know where you are?",
+				"<p>Is the current keyboard focus obvious on every tabbable element, or do you sometimes not know where you are?</p>",
 			longDescription: "",
 			displayOrder: 3,
 			section: { where: { name: "Keyboard Access" } }
@@ -102,7 +102,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Fully complete a form - check the ability to use radio buttons and checkboxes",
+				"<p>Fully complete a form - check the ability to use radio buttons and checkboxes</p>",
 			longDescription: "",
 			displayOrder: 4,
 			section: { where: { name: "Keyboard Access" } }
@@ -112,7 +112,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				'Ensure you\'re not able to tab into controls that are visually hidden (unless they are present as an accessibility feature e.g. "Skip to content" links',
+				'<p>Ensure you\'re not able to tab into controls that are visually hidden (unless they are present as an accessibility feature e.g. "Skip to content" links</p>',
 			longDescription: "",
 			displayOrder: 5,
 			section: { where: { name: "Keyboard Access" } }
@@ -122,7 +122,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Modal or modal-like interfaces should prevent tabbing back to the main content until the modal is closed",
+				"<p>Modal or modal-like interfaces should prevent tabbing back to the main content until the modal is closed</p>",
 			longDescription: "",
 			displayOrder: 6,
 			section: { where: { name: "Keyboard Access" } }
@@ -132,7 +132,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Can you use the esc key to close modals or other dynamic interfaces?",
+				"<p>Can you use the esc key to close modals or other dynamic interfaces?</p>",
 			longDescription: "",
 			displayOrder: 7,
 			section: { where: { name: "Keyboard Access" } }
@@ -142,7 +142,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"If you interact with the page in a manner which modifies the DOM, is the screenreader notified of this?",
+				"<p>If you interact with the page in a manner which modifies the DOM, is the screenreader notified of this?</p>",
 			longDescription: "",
 			displayOrder: 1,
 			section: { where: { name: "Screen reader" } }
@@ -152,7 +152,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Use the screen reader shortcut key to jump between headings on the page. Is the page's content easily accessible if navigating this way?",
+				"<p>Use the screen reader shortcut key to jump between headings on the page. Is the page's content easily accessible if navigating this way?</p>",
 			longDescription: "",
 			displayOrder: 2,
 			section: { where: { name: "Screen reader" } }
@@ -162,7 +162,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Use the screen reader shortcut key to jump between landmark regions on the page. Is the page's content easily accessible if navigating this way?",
+				"<p>Use the screen reader shortcut key to jump between landmark regions on the page. Is the page's content easily accessible if navigating this way?</p>",
 			longDescription: "",
 			displayOrder: 3,
 			section: { where: { name: "Screen reader" } }
@@ -172,7 +172,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Can you skip repetative or large amounts of supporting content?",
+				"<p>Can you skip repetative or large amounts of supporting content?</p>",
 			longDescription: "",
 			displayOrder: 4,
 			section: { where: { name: "Screen reader" } }
@@ -182,7 +182,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Do the headings accurately describe the content they preceed?",
+				"<p>Do the headings accurately describe the content they preceed?</p>",
 			longDescription: "",
 			displayOrder: 5,
 			section: { where: { name: "Screen reader" } }
@@ -192,7 +192,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Are there accurate text shortDescriptions of images that contain content (not purely decorative imagery)?",
+				"<p>Are there accurate text shortDescriptions of images that contain content (not purely decorative imagery)?</p>",
 			longDescription: "",
 			displayOrder: 6,
 			section: { where: { name: "Screen reader" } }
@@ -202,7 +202,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Is it easy to recover, amend and resubmit a form with focus pulled to a summary of form errors?",
+				"<p>Is it easy to recover, amend and resubmit a form with focus pulled to a summary of form errors?</p>",
 			longDescription: "",
 			displayOrder: 7,
 			section: { where: { name: "Screen reader" } }
@@ -212,7 +212,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"If a single form input fails validation, is it obvious to the user?",
+				"<p>If a single form input fails validation, is it obvious to the user?</p>",
 			longDescription: "",
 			displayOrder: 8,
 			section: { where: { name: "Screen reader" } }
@@ -222,7 +222,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Can you fill in and submit any forms by using a screen reader only?",
+				"<p>Can you fill in and submit any forms by using a screen reader only?</p>",
 			longDescription: "",
 			displayOrder: 8,
 			section: { where: { name: "Screen reader" } }
@@ -231,7 +231,8 @@ module.exports = {
 			name: "Mobile reflow",
 			shortSupport: "",
 			longSupport: "",
-			shortDescription: "Page must reflow to 320 CSS pixels and scroll vertically",
+			shortDescription:
+				"<p>Page must reflow to 320 CSS pixels and scroll vertically</p>",
 			longDescription: "",
 			displayOrder: 1,
 			section: { where: { name: "Visual inspection" } }
@@ -240,7 +241,8 @@ module.exports = {
 			name: "Screen zoom",
 			shortSupport: "",
 			longSupport: "",
-			shortDescription: "Use a screen zoom application like windows magnifier",
+			shortDescription:
+				"<p>Use a screen zoom application like windows magnifier</p>",
 			longDescription: "",
 			displayOrder: 2,
 			section: { where: { name: "Visual inspection" } }
@@ -250,7 +252,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Do you lose information or context if the page is set to greyscale?",
+				"<p>Do you lose information or context if the page is set to greyscale?</p>",
 			longDescription: "",
 			displayOrder: 3,
 			section: { where: { name: "Visual inspection" } }
@@ -259,7 +261,7 @@ module.exports = {
 			name: "Disable all CSS",
 			shortSupport: "",
 			longSupport: "",
-			shortDescription: "Does the flow of the page still make sense?",
+			shortDescription: "<p>Does the flow of the page still make sense?</p>",
 			longDescription: "",
 			displayOrder: 4,
 			section: { where: { name: "Visual inspection" } }
@@ -269,7 +271,7 @@ module.exports = {
 			shortSupport: "",
 			longSupport: "",
 			shortDescription:
-				"Is the page still fully usable if the browser is zoomed to 200%?",
+				"<p>Is the page still fully usable if the browser is zoomed to 200%?</p>",
 			longDescription: "",
 			displayOrder: 5,
 			section: { where: { name: "Visual inspection" } }
