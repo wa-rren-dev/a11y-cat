@@ -24,7 +24,7 @@ export function SpecificationList() {
 
 	if (loading) return <div>Loading...</div>;
 
-	if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
+	if (error) throw new Error(error);
 
 	const { allSpecifications } = data;
 
@@ -52,6 +52,7 @@ export function SpecificationList() {
 					<ul className="list--unstyled">
 						{allSpecifications.map(({ name, id, _requirementsMeta }) => (
 							<Card
+								key={id}
 								elementType="li"
 								headingText={name}
 								headingElementType="h2"

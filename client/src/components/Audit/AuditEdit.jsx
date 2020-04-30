@@ -34,12 +34,8 @@ export const AuditEdit = () => {
 
 	if (loading) return <div>Loading...</div>;
 
-	if (error)
-		return (
-			<>
-				<p>Error: {JSON.stringify(error)}</p>
-			</>
-		);
+	if (error) throw new Error(error);
+
 	const {
 		Audit: { name }
 	} = data;

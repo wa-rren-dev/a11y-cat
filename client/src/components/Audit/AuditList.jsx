@@ -28,7 +28,7 @@ export function AuditList() {
 
 	if (loading) return <div>Loading...</div>;
 
-	if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
+	if (error) throw new Error(error);
 
 	const { allAudits } = data;
 
@@ -46,7 +46,7 @@ export function AuditList() {
 				many <b>tests</b>. When you create an <b>audit</b>, you're asked which{" "}
 				<b>service</b> the <b>audit</b> refers to.
 			</p>
-			<Button href="/audits/create" elementType="a" variant="cta">
+			<Button to="/audits/create" elementType={Link} variant="cta">
 				Create a new audit
 			</Button>
 			<hr />

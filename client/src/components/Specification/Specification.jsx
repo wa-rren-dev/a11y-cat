@@ -34,12 +34,7 @@ export function Specification() {
 
 	if (loading) return <div>Loading...</div>;
 
-	if (error)
-		return (
-			<>
-				<p>Error: {JSON.stringify(error)}</p>
-			</>
-		);
+	if (error) throw new Error(error);
 
 	const { name, requirements, description } = data.Specification;
 
@@ -74,7 +69,7 @@ export function Specification() {
 				{sortedRequirements(requirements).map(({ name, id, requirements }) => (
 					<>
 						<GridItem cols={12}>
-							<h2 class="h4">{name}</h2>
+							<h2 className="h4">{name}</h2>
 							<ul>
 								{requirements.map(item => (
 									<li>
