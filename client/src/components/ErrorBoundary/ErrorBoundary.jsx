@@ -25,7 +25,7 @@ export class ErrorBoundary extends Component {
 			return (
 				<Alert type="error">
 					<h1>Something went awry...</h1>
-					<h2>{error}</h2>
+					<h2 className="h4">{error}</h2>
 					<pre>{stack}</pre>
 				</Alert>
 			);

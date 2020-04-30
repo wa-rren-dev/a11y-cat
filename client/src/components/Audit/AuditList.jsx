@@ -28,7 +28,7 @@ export function AuditList() {
 
 	if (loading) return <div>Loading...</div>;
 
-	if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
+	if (error) throw new Error(error);
 
 	const { allAudits } = data;
 
