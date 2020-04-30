@@ -41,8 +41,12 @@ export function AuditList() {
 				<Breadcrumb>Audits</Breadcrumb>
 			</Breadcrumbs>
 			<h1>Audits</h1>
-			<p>A list of all the audits that have been created.</p>
-			<Button href="/audits/create" elementType="a" variant="cta">
+			<p>
+				An <b>audit</b> is a set of <b>tests</b>. An <b>audit</b> can contain one or
+				many <b>tests</b>. When you create an <b>audit</b>, you're asked which{" "}
+				<b>service</b> the <b>audit</b> refers to.
+			</p>
+			<Button to="/audits/create" elementType={Link} variant="cta">
 				Create a new audit
 			</Button>
 			<ul className="list--unstyled">
