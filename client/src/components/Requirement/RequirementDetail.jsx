@@ -6,21 +6,18 @@ import parse from "html-react-parser";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { Grid, GridItem } from "@nice-digital/nds-grid";
-import { map, uniq, path, pipe } from "ramda";
 
 const GETREQUIREMENT = gql`
 	query Requirement($id: ID!) {
 		Requirement(where: { id: $id }) {
 			name
-			#			description
-			#			requirements {
-			#				name
-			#				id
-			#				section {
-			#					name
-			#				}
-			#			}
+			section {
+				name
+			}
+			shortSupport
+			longSupport
+			shortDescription
+			longDescription
 		}
 	}
 `;
@@ -34,14 +31,18 @@ export function RequirementDetail() {
 
 	if (loading) return <div>Loading...</div>;
 
-	if (error)
-		return (
-			<>
-				<p>Error: {JSON.stringify(error)}</p>
-			</>
-		);
+	if (error) {
+		throw new Error(error);
+	}
 
-	const { name } = data.Requirement;
+	const {
+		name,
+		shortSupport,
+		longSupport,
+		shortDescription,
+		longDescription,
+		section
+	} = data.Requirement;
 
 	return (
 		<>
@@ -49,12 +50,32 @@ export function RequirementDetail() {
 				<title>Details for requirement - {name}</title>
 			</Helmet>
 			<Breadcrumbs>
+				<Breadcrumb tag={Link} to="/">
+					Home
+				</Breadcrumb>
 				<Breadcrumb tag={Link} to="/requirements">
 					Requirements
 				</Breadcrumb>
 				<Breadcrumb>{name}</Breadcrumb>
 			</Breadcrumbs>
 			<h1>{name}</h1>
+			{section?.name && (
+				<p>
+					Requirements group: <b>{section.name}</b>
+				</p>
+			)}
+			{(longDescription || shortDescription) && (
+				<>
+					<h3>Description</h3>
+					{parse(longDescription ? longDescription : shortDescription)}
+				</>
+			)}
+			{(longSupport || shortSupport) && (
+				<>
+					<h3>Support</h3>
+					{parse(longSupport ? longSupport : shortSupport)}
+				</>
+			)}
 		</>
 	);
 }

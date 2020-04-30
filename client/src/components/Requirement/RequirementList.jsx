@@ -4,7 +4,6 @@ import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { Link } from "react-router-dom";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
-import { Card } from "@nice-digital/nds-card";
 import { Helmet } from "react-helmet";
 import parse from "html-react-parser";
 import s from "./RequirementList.module.scss";
@@ -56,17 +55,19 @@ export function RequirementList() {
 							{allRequirements.map(({ name, id, shortDescription }) => (
 								<div key={id} className={s.descriptionList}>
 									<GridItem
-										cols="12 sm:2"
+										cols={12}
+										md={{ cols: 2 }}
 										elementType="dt"
 										className={s.descriptionList__term}
 									>
-										<h2 class="h5">
+										<h2 className="h5">
 											<Link to={`/requirements/${id}`}>{name}</Link>
 										</h2>
 									</GridItem>
 									<GridItem
 										elementType="dd"
-										cols="12 sm:7"
+										cols={12}
+										md={{ cols: 7 }}
 										className={s.descriptionList__description}
 									>
 										{parse(shortDescription)}
