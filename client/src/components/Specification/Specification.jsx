@@ -66,13 +66,15 @@ export function Specification() {
 			<p>{parse(description)}</p>
 
 			<Grid>
-				{sortedRequirements(requirements).map(({ name, requirements }) => (
+				{sortedRequirements(requirements).map(({ name, id, requirements }) => (
 					<>
 						<GridItem cols={12}>
 							<h2 className="h4">{name}</h2>
 							<ul>
 								{requirements.map(item => (
-									<li>{item.name}</li>
+									<li>
+										<Link to={`/requirements/${item.id}`}>{item.name}</Link>
+									</li>
 								))}
 							</ul>
 						</GridItem>

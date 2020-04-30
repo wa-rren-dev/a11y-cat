@@ -46,3 +46,5 @@ We'll add to this as the app develops.
 | `/audits`             | List of audits                                             |
 | `/audits/:id`         | Audit details (list of tests)                              |
 | `/test/:id`           | Test details (where you conduct the test (list of results) |
+| `/requirements`       | Full list of all requirements |
+| `/requirements/:id`   | Requirement details & support |

@@ -1,0 +1,27 @@
+{
+  "name": "a11y-cat",
+  "version": "1.0.0",
+  "description": "![Poor little alley cat](https://wa-rren-dev.github.io/a11y-cat/cat.jpg)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "cd server && npm run dev",
+    "start": "concurrently \"npm run client\" \"npm run server\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wa-rren-dev/a11y-cat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wa-rren-dev/a11y-cat/issues"
+  },
+  "homepage": "https://github.com/wa-rren-dev/a11y-cat#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  }
+}

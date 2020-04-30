@@ -49,6 +49,7 @@ export function AuditList() {
 			<Button to="/audits/create" elementType={Link} variant="cta">
 				Create a new audit
 			</Button>
+			<hr />
 			<ul className="list--unstyled">
 				{allAudits.map(({ name, id, _testsMeta, service }) => (
 					<Card

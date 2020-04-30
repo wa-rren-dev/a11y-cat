@@ -12,6 +12,8 @@ import { Footer } from "../Footer/Footer";
 import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import "./App.scss";
 import { AuditList } from "../Audit/AuditList";
+import { RequirementDetail } from "../Requirement/RequirementDetail";
+import { RequirementList } from "../Requirement/RequirementList";
 
 const client = new ApolloClient({
 	uri: "http://localhost:3000/admin/api"
@@ -41,6 +43,12 @@ function App() {
 						</Route>
 						<Route path="/audits/:id/edit" exact>
 							<AuditEdit />
+						</Route>
+						<Route path="/requirements" exact>
+							<RequirementList />
+						</Route>
+						<Route path="/requirements/:id" exact>
+							<RequirementDetail />
 						</Route>
 					</Switch>
 				</ErrorBoundary>

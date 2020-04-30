@@ -39,6 +39,16 @@ export function SpecificationList() {
 			<Grid>
 				<GridItem cols={12}>
 					<h1>Specifications</h1>
+					<p>
+						When you create a <b>test</b>, you choose the <b>specification</b> that
+						you would like to test against.
+					</p>
+					<p>
+						<b>Specifications</b> are collections of <b>requirements</b> (requirements
+						being individual "checklist" items to test against). Multiple{" "}
+						<b>specifications</b> can reference the same <b>requirements</b>.
+					</p>
+					<hr />
 					<ul className="list--unstyled">
 						{allSpecifications.map(({ name, id, _requirementsMeta }) => (
 							<Card
