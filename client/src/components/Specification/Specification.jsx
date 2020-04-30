@@ -57,7 +57,10 @@ export function Specification() {
 				<title>Details for specification - {name}</title>
 			</Helmet>
 			<Breadcrumbs>
-				<Breadcrumb tag={Link} to="/specifications">
+				<Breadcrumb elementType={Link} to="/">
+					Home
+				</Breadcrumb>
+				<Breadcrumb elementType={Link} to="/specifications">
 					Specifications
 				</Breadcrumb>
 				<Breadcrumb>{name}</Breadcrumb>
@@ -66,19 +69,17 @@ export function Specification() {
 			<p>{parse(description)}</p>
 
 			<Grid>
-				{sortedRequirements(requirements).map(({ name, id, requirements }) => (
-					<>
-						<GridItem cols={12}>
-							<h2 className="h4">{name}</h2>
-							<ul>
-								{requirements.map(item => (
-									<li>
-										<Link to={`/requirements/${item.id}`}>{item.name}</Link>
-									</li>
-								))}
-							</ul>
-						</GridItem>
-					</>
+				{sortedRequirements(requirements).map(({ name, requirements }) => (
+					<GridItem cols={12} key={name}>
+						<h2 className="h4">{name}</h2>
+						<ul>
+							{requirements.map(({ id, name }) => (
+								<li key={id}>
+									<Link to={`/requirements/${id}`}>{name}</Link>
+								</li>
+							))}
+						</ul>
+					</GridItem>
 				))}
 			</Grid>
 		</>

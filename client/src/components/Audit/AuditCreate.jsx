@@ -23,19 +23,24 @@ const DELETE_AUDIT = gql`
 
 export const AuditCreate = () => {
 	const { register, handleSubmit, errors } = useForm();
+
 	const [addAudit, { data, loading, error }] = useMutation(ADD_AUDIT);
+
 	const [
 		deleteAudit,
 		{ data: deleteData, loading: deleteLoading, error: deleteError }
 	] = useMutation(DELETE_AUDIT);
+
 	const onSubmit = ({ auditName }) =>
 		addAudit({ variables: { data: { name: auditName } } });
+
 	const handleDelete = () =>
 		deleteAudit({ variables: { id: data.createAudit.id } });
 
+	if (error) throw new Error(error);
+
 	return (
 		<div>
-			{error && <p>Something went wrong</p>}
 			{!data ? (
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<label htmlFor="auditName">Name</label>

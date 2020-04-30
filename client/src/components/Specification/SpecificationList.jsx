@@ -34,6 +34,9 @@ export function SpecificationList() {
 				<title>Specifications list</title>
 			</Helmet>
 			<Breadcrumbs>
+				<Breadcrumb elementType={Link} to="/">
+					Home
+				</Breadcrumb>
 				<Breadcrumb>Specifications</Breadcrumb>
 			</Breadcrumbs>
 			<Grid>

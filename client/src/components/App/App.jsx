@@ -7,8 +7,6 @@ import { Specification } from "../Specification/Specification";
 import { AuditCreate } from "../Audit/AuditCreate";
 import { AuditEdit } from "../Audit/AuditEdit";
 import { Home } from "../Home/Home";
-import { Header } from "../Header/Header";
-import { Footer } from "../Footer/Footer";
 import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import "./App.scss";
 import { AuditList } from "../Audit/AuditList";
@@ -23,7 +21,6 @@ function App() {
 	return (
 		<main>
 			<Router>
-				<Header />
 				<ErrorBoundary>
 					<Switch>
 						<Route path="/" exact>
@@ -52,7 +49,6 @@ function App() {
 						</Route>
 					</Switch>
 				</ErrorBoundary>
-				<Footer />
 			</Router>
 		</main>
 	);

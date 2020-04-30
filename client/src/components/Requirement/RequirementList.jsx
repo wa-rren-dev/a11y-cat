@@ -23,7 +23,7 @@ export function RequirementList() {
 
 	if (loading) return <div>Loading...</div>;
 
-	if (error) return <pre>Error: {JSON.stringify(error)}</pre>;
+	if (error) throw new Error(error);
 
 	const { allRequirements } = data;
 
@@ -33,6 +33,9 @@ export function RequirementList() {
 				<title>Requirements List</title>
 			</Helmet>
 			<Breadcrumbs>
+				<Breadcrumb elementType={Link} to="/">
+					Home
+				</Breadcrumb>
 				<Breadcrumb>Requirements</Breadcrumb>
 			</Breadcrumbs>
 			<Grid>

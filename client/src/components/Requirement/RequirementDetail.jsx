@@ -31,9 +31,7 @@ export function RequirementDetail() {
 
 	if (loading) return <div>Loading...</div>;
 
-	if (error) {
-		throw new Error(error);
-	}
+	if (error) throw new Error(error);
 
 	const {
 		name,
@@ -50,10 +48,10 @@ export function RequirementDetail() {
 				<title>Details for requirement - {name}</title>
 			</Helmet>
 			<Breadcrumbs>
-				<Breadcrumb tag={Link} to="/">
+				<Breadcrumb elementType={Link} to="/">
 					Home
 				</Breadcrumb>
-				<Breadcrumb tag={Link} to="/requirements">
+				<Breadcrumb elementType={Link} to="/requirements">
 					Requirements
 				</Breadcrumb>
 				<Breadcrumb>{name}</Breadcrumb>

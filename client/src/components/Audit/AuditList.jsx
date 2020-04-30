@@ -38,6 +38,9 @@ export function AuditList() {
 				<title>List of audits</title>
 			</Helmet>
 			<Breadcrumbs>
+				<Breadcrumb elementType={Link} to="/">
+					Home
+				</Breadcrumb>
 				<Breadcrumb>Audits</Breadcrumb>
 			</Breadcrumbs>
 			<h1>Audits</h1>
