@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm, Controller as FormController } from "react-hook-form";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { Helmet } from "react-helmet";
-import parse from "html-react-parser";
 import { Grid, GridItem } from "@nice-digital/nds-grid";
 import { Breadcrumbs, Breadcrumb } from "@nice-digital/nds-breadcrumbs";
 import { FormGroup } from "@nice-digital/nds-form-group";
-import { Input } from "@nice-digital/nds-forms";
+import { Input, Textarea } from "@nice-digital/nds-forms";
 import { Radio } from "@nice-digital/nds-radio";
 import { Button } from "@nice-digital/nds-button";
+import { DevTool } from "react-hook-form-devtools";
 
 const GET_SERVICES = gql`
 	{
@@ -22,7 +22,7 @@ const GET_SERVICES = gql`
 	}
 `;
 
-const ADD_AUDIT = gql`
+const CREATE_AUDIT = gql`
 	mutation CreateAudit($data: AuditCreateInput) {
 		createAudit(data: $data) {
 			name
@@ -46,20 +46,14 @@ export const AuditCreate = () => {
 		data: dataServices
 	} = useQuery(GET_SERVICES);
 
-	const { register, handleSubmit, errors } = useForm();
+	const { register, handleSubmit, errors, control } = useForm();
 
-	const [addAudit, { data, loading, error }] = useMutation(ADD_AUDIT);
+	const [createAudit, { data, loading, error }] = useMutation(CREATE_AUDIT);
 
-	const [
-		deleteAudit,
-		{ data: deleteData, loading: deleteLoading, error: deleteError }
-	] = useMutation(DELETE_AUDIT);
-
-	const onSubmit = ({ auditName }) =>
-		addAudit({ variables: { data: { name: auditName } } });
-
-	const handleDelete = () =>
-		deleteAudit({ variables: { id: data.createAudit.id } });
+	const onSubmit = ({ name, description, service }) => {
+		console.log(`Need to log service ID ${service}`);
+		createAudit({ variables: { data: { name, description } } });
+	};
 
 	if (loadingServices) return <h1>Loading...</h1>;
 
@@ -89,23 +83,45 @@ export const AuditCreate = () => {
 				many <b>tests</b>. When you create an <b>audit</b>, you're asked which{" "}
 				<b>service</b> the <b>audit</b> refers to.
 			</p>
-
 			<Grid>
 				<GridItem cols={12} md={8}>
-					<form>
-						<Input
-							label="Audit name"
-							unique="name"
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<FormController
+							as={Input}
 							name="name"
-							type="text"
-							ref={register({ required: true })}
+							control={control}
+							label="Audit name"
+							defaultValue=""
+							required
+							unique="name"
 						/>
-						<FormGroup
-							legend="Select the service that this audit will test"
-							name="service"
-						>
+						<div className="textarea">
+							<label htmlFor="description" className="textarea__label">
+								Description
+							</label>
+							<textarea
+								ref={register}
+								className="textarea__input"
+								name="description"
+								id="description"
+							/>
+						</div>
+						<FormGroup legend="Select the service that this audit will test">
 							{allServices.map(({ id, name, baseUrl }) => (
-								<Radio hint={baseUrl} key={id} value={id} name={id} label={name} />
+								<div className="radio" key={id}>
+									<input
+										ref={register}
+										className="radio__input"
+										name="service"
+										type="radio"
+										id={`service-${id}`}
+										value={id}
+									/>
+									<label className="radio__label" htmlFor={`service-${id}`}>
+										{name}
+									</label>
+									<span className="checkbox__hint">{baseUrl}</span>
+								</div>
 							))}
 						</FormGroup>
 						<Button variant="cta" type="submit">
@@ -114,40 +130,7 @@ export const AuditCreate = () => {
 					</form>
 				</GridItem>
 			</Grid>
-
-			{/*{!data ? (*/}
-			{/*	<form onSubmit={handleSubmit(onSubmit)}>*/}
-			{/*		<label htmlFor="auditName">Name</label>*/}
-			{/*		<input*/}
-			{/*			type="text"*/}
-			{/*			id="auditName"*/}
-			{/*			name="auditName"*/}
-			{/*			ref={register({ required: true })}*/}
-			{/*		/>*/}
-			{/*		{errors.auditName && <span>This field is required</span>}*/}
-			{/*		{loading ? (*/}
-			{/*			<p>Creating audit...</p>*/}
-			{/*		) : (*/}
-			{/*			<button type="submit">Create</button>*/}
-			{/*		)}*/}
-			{/*	</form>*/}
-			{/*) : (*/}
-			{/*	<>*/}
-			{/*		{!deleteData && (*/}
-			{/*			<>*/}
-			{/*				<p>Audit {data.createAudit.name} created</p>*/}
-			{/*				<Link to={`/audits/${data.createAudit.id}/edit`}>Edit</Link>*/}
-			{/*			</>*/}
-			{/*		)}*/}
-			{/*		{!deleteData ? (*/}
-			{/*			<button type="button" onClick={handleDelete}>*/}
-			{/*				Delete*/}
-			{/*			</button>*/}
-			{/*		) : (*/}
-			{/*			<p>{deleteData.deleteAudit.name} successfully deleted</p>*/}
-			{/*		)}*/}
-			{/*	</>*/}
-			{/*)}*/}
+			<DevTool control={control} /> {/* set up the dev tool */}
 		</>
 	);
 };

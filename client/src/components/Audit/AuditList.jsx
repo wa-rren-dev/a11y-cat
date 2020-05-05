@@ -24,7 +24,9 @@ const AUDITS = gql`
 `;
 
 export function AuditList() {
-	const { loading, error, data } = useQuery(AUDITS);
+	const { loading, error, data } = useQuery(AUDITS, {
+		fetchPolicy: "cache-and-network"
+	});
 
 	if (loading) return <div>Loading...</div>;
 
