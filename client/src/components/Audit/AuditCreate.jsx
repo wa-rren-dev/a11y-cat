@@ -86,6 +86,13 @@ export const AuditCreate = () => {
 			<Grid>
 				<GridItem cols={12} md={8}>
 					<form onSubmit={handleSubmit(onSubmit)}>
+						<Input
+							label={"First name"}
+							name={"firstname"}
+							hint={"Please enter your name"}
+							error={true}
+							errorMessage={"This field is required"}
+						/>
 						<FormController
 							as={Input}
 							name="name"
