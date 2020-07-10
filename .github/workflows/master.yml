@@ -29,5 +29,6 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: docker.pkg.github.com
         repository: wa-rren-dev/a11y-cat/backend
+        path: server
         dockerfile: server/Dockerfile
         tag_with_ref: true
