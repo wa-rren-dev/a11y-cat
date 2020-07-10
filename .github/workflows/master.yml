@@ -22,7 +22,7 @@ jobs:
     - name: Check out the repo
       uses: actions/checkout@v2
       
-    - name: Build and push Docker images
+    - name: Build and push backend Docker image
       uses: docker/build-push-action@v1.1.0
       with:
         username: ${{ github.actor }}
